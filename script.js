@@ -1,18 +1,18 @@
 function showMessage() {
     alert("Welcome to EduNova AI 🚀");
 }
-function checkAnswer(){
+let score = 0;
 
-let ans=document.getElementById("correct");
+function checkAnswer() {
 
-if(ans.checked){
+    let ans = document.getElementById("correct");
 
-document.getElementById("result").innerHTML="✅ Correct Answer";
+    if (ans.checked) {
+        score = score + 1;
+        document.getElementById("result").innerHTML = "✅ Correct Answer";
+    } else {
+        document.getElementById("result").innerHTML = "❌ Wrong Answer";
+    }
 
-}else{
-
-document.getElementById("result").innerHTML="❌ Wrong Answer";
-
-}
-
+    document.getElementById("score").innerHTML = "Score : " + score;
 }
