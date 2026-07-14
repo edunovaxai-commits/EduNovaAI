@@ -29,6 +29,7 @@ alert("Please enter Email and Password");
 
 }else{
 
+localStorage.setItem("studentName", email);
 window.location.href="dashboard.html";
 
 }
