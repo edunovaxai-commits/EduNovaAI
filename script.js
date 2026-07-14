@@ -79,6 +79,7 @@ alert("Please fill all fields");
 
 localStorage.setItem("studentName", name);
 localStorage.setItem("studentEmail", email);
+localStorage.setItem("studentPassword", password);
 
 alert("Account Created Successfully!");
 
