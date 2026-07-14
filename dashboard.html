@@ -53,15 +53,19 @@
 
 </footer>
 
-  <script>
+  <script src="script.js"></script>
+
+<script>
 window.onload = function () {
     let name = localStorage.getItem("studentName");
 
-    if (name) {
-        document.getElementById("welcome").innerHTML = "Welcome " + name + " 👋";
+    if (!name) {
+        window.location.href = "login.html";
+        return;
     }
+
+    document.getElementById("welcome").innerHTML = "Welcome " + name + " 👋";
 }
 </script>
-  <script src="script.js"></script>
 </body>
 </html>
