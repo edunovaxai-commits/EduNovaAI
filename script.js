@@ -29,8 +29,9 @@ document.getElementById("error").innerHTML = "Please enter Email and Password";
 }else{
 
 let savedEmail = localStorage.getItem("studentEmail");
+let savedPassword = localStorage.getItem("studentPassword");
 
-if(email == savedEmail){
+if(email == savedEmail && password == savedPassword){
 
 let username = email.split("@")[0];
 localStorage.setItem("studentName", username);
