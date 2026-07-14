@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Settings - EduNova AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>⚙️ Settings</h1>
+
+<a href="dashboard.html">
+    <button>🏠 Back to Dashboard</button>
+</a>
+<br><br>
+<h3>Appearance</h3>
+
+<button onclick="alert('Dark Mode coming soon!')">
+🌙 Dark Mode
+</button>
+  <br><br>
+
+<h3>Account</h3>
+
+<button onclick="window.location.href='profile.html'">
+👤 My Profile
+</button>
+  <br><br>
+
+<button onclick="localStorage.clear(); window.location.href='signup.html';">
+🗑️ Reset Account
+</button>
+  <br><br>
+
+<p style="color:red;">
+⚠️ Reset Account केल्यावर तुमचा डेटा हटवला जाईल.
+</p>
+<p>Version: EduNova AI v1.0</p>
+  <p>Developed by Mayur Sonawane</p>
+  <p>© 2026 EduNova AI. All Rights Reserved.</p>
+  <hr>
+
+<p>Need Help?</p>
+
+<button onclick="window.location.href='mailto:support@edunovaai.com'">
+📧 Contact Support
+</button>
+  <br><br>
+
+<button onclick="window.open('https://github.com/', '_blank')">
+💻 GitHub
+</button>
+<button onclick="logout()">🚪 Logout</button>
+
+<script src="script.js"></script>
+</body>
+</html>
