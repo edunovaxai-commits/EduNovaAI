@@ -91,3 +91,31 @@ window.location.href="login.html";
 }
 
 }
+
+function askAI() {
+
+let question = document.getElementById("question").value.toLowerCase();
+
+let answer = "";
+
+if(question.includes("html")){
+
+answer = "HTML is used to create the structure of a web page.";
+
+}else if(question.includes("css")){
+
+answer = "CSS is used to style web pages.";
+
+}else if(question.includes("javascript")){
+
+answer = "JavaScript is used to make web pages interactive.";
+
+}else{
+
+answer = "Sorry! I don't know the answer yet.";
+
+}
+
+document.getElementById("answer").innerHTML = answer;
+
+}
