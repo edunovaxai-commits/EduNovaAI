@@ -55,3 +55,5 @@ localStorage.removeItem("studentName");
 window.location.href = "index.html";
 
 }
+
+<button onclick="signup()">Create Account</button>
