@@ -1,5 +1,5 @@
 function showMessage() {
-    alert("Welcome to EduNova AI 🚀");
+    window.location.href = "login.html";
 }
 let score = 0;
 
