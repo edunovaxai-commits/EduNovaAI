@@ -29,7 +29,8 @@ alert("Please enter Email and Password");
 
 }else{
 
-localStorage.setItem("studentName", email);
+let username = email.split("@")[0];
+localStorage.setItem("studentName", username);
 window.location.href="dashboard.html";
 
 }
