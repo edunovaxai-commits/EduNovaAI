@@ -110,6 +110,10 @@ answer = "CSS is used to style web pages.";
 
 answer = "JavaScript is used to make web pages interactive.";
 
+}else if(question.includes("python")){
+
+answer = "Python is a powerful programming language used for AI, web development, automation, and data science.";
+
 }else{
 
 answer = "Sorry! I don't know the answer yet.";
