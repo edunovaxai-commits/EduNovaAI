@@ -16,3 +16,21 @@ function checkAnswer() {
 
     document.getElementById("score").innerHTML = "Score : " + score;
 }
+
+function login() {
+
+let email = document.getElementById("email").value;
+
+let password = document.getElementById("password").value;
+
+if(email=="" || password==""){
+
+alert("Please enter Email and Password");
+
+}else{
+
+window.location.href="dashboard.html";
+
+}
+
+}
