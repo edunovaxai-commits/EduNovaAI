@@ -55,5 +55,25 @@ localStorage.removeItem("studentName");
 window.location.href = "index.html";
 
 }
+function signup() {
 
-<button onclick="signup()">Create Account</button>
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let password = document.getElementById("password").value;
+
+if(name=="" || email=="" || password==""){
+
+alert("Please fill all fields");
+
+}else{
+
+localStorage.setItem("studentName", name);
+localStorage.setItem("studentEmail", email);
+
+alert("Account Created Successfully!");
+
+window.location.href="login.html";
+
+}
+
+}
