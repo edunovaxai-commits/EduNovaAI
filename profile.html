@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile - EduNova AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>👤 Student Profile</h1>
+
+<p><b>Name:</b> <span id="name"></span></p>
+<p><b>Email:</b> <span id="email"></span></p>
+
+<script src="script.js"></script>
+
+<script>
+document.getElementById("name").innerHTML = localStorage.getItem("studentName");
+document.getElementById("email").innerHTML = localStorage.getItem("studentEmail");
+</script>
+
+</body>
+</html>
