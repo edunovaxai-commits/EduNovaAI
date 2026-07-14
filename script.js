@@ -26,12 +26,22 @@ let password = document.getElementById("password").value;
 if(email=="" || password==""){
 
 document.getElementById("error").innerHTML = "Please enter Email and Password";
-
 }else{
+
+let savedEmail = localStorage.getItem("studentEmail");
+
+if(email == savedEmail){
 
 let username = email.split("@")[0];
 localStorage.setItem("studentName", username);
+
 window.location.href="dashboard.html";
+
+}else{
+
+document.getElementById("error").innerHTML = "Account not found";
+
+}
 
 }
 
