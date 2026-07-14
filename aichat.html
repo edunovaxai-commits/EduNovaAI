@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AI Doubt Solver</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Doubt Solver - EduNova AI</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <h1>🤖 AI Doubt Solver</h1>
 
 <p>Ask your study question below.</p>
 
-<input type="text" placeholder="Ask your question">
+<textarea id="question" placeholder="Ask your question here..." rows="5" cols="35"></textarea>
 
 <br><br>
 
-<button>Ask AI</button>
+<button onclick="askAI()">Ask AI</button>
+
+<br><br>
+
+<h3>Answer:</h3>
+
+<p id="answer"></p>
+
+<br><br>
+
+<a href="dashboard.html">
+<button>🏠 Back to Dashboard</button>
+</a>
+
+<script src="script.js"></script>
 
 </body>
 </html>
