@@ -46,3 +46,23 @@ input{
     border:none;
     font-size:16px;
 }
+header{
+    background:#2563eb;
+    color:white;
+    padding:20px;
+}
+
+section{
+    padding:30px;
+}
+
+footer{
+    margin-top:40px;
+    background:#111827;
+    color:white;
+    padding:15px;
+}
+
+button{
+    width:250px;
+}
