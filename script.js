@@ -36,11 +36,13 @@ if(email == savedEmail && password == savedPassword){
 let username = email.split("@")[0];
 localStorage.setItem("studentName", username);
 
+document.getElementById("email").value = "";
+document.getElementById("password").value = "";
 window.location.href="dashboard.html";
 
 }else{
 
-document.getElementById("error").innerHTML = "Account not found";
+document.getElementById("error").innerHTML = "Invalid Email or Password";
 
 }
 
