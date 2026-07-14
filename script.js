@@ -25,7 +25,7 @@ let password = document.getElementById("password").value;
 
 if(email=="" || password==""){
 
-alert("Please enter Email and Password");
+document.getElementById("error").innerHTML = "Please enter Email and Password";
 
 }else{
 
