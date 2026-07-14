@@ -8,15 +8,77 @@
 
 <h1>👤 Student Profile</h1>
 
+<img src="https://via.placeholder.com/120" alt="Profile Photo" width="120">
+  <br><br>
+
+<input type="file" id="profilePhoto">
+    <br><br>
+
+<img id="preview"
+src="https://via.placeholder.com/120"
+width="120"
+style="border-radius:50%; border:3px solid #4CAF50; object-fit:cover;">
 <p><b>Name:</b> <span id="name"></span></p>
 <p><b>Email:</b> <span id="email"></span></p>
+    <p><b>Status:</b> Active ✅</p>
+    <p><b>Member Since:</b> 2026</p>
+    <p><b>Total Quizzes:</b> 0</p>
+    <p><b>Highest Score:</b> 0</p>
+    <p><b>Courses Enrolled:</b> 1</p>
+    <p><b>Achievements:</b> 🏅 Beginner Learner</p>
+    <p><b>Current Level:</b> Level 1 ⭐</p>
+    <p><b>Certificates Earned:</b> 0 📜</p>
+    <p><b>Learning Streak:</b> 🔥 1 Day</p>
+    <p><b>Last Login:</b> Today</p>
+    <p><b>Theme:</b> Light ☀️</p>
+    <p><b>Account Type:</b> Student 🎓</p>
 <br>
+    
+<button onclick="alert('This feature will be available soon!')">
+✏️ Edit Profile
+</button>
+
+<br><br>
+
+<button onclick="alert('Change Password feature coming soon!')">
+🔒 Change Password
+</button>
+    
+    <br><br>
+
+<a href="dashboard.html">
+    <button>🏠 Back to Dashboard</button>
+</a>
 <button onclick="logout()">Logout</button>
 <script src="script.js"></script>
 
 <script>
+let savedPhoto = localStorage.getItem("profilePhoto");
+
+if(savedPhoto){
+
+document.getElementById("preview").src = savedPhoto;
+
+document.getElementById("preview").style.display = "block";
+
+}
+    
 document.getElementById("name").innerHTML = localStorage.getItem("studentName");
 document.getElementById("email").innerHTML = localStorage.getItem("studentEmail");
+
+document.getElementById("profilePhoto").addEventListener("change", function(event){
+
+let file = event.target.files[0];
+
+if(file){
+
+document.getElementById("preview").src = URL.createObjectURL(file);
+
+document.getElementById("preview").style.display = "block";
+localStorage.setItem("profilePhoto", URL.createObjectURL(file));
+}
+
+});
 </script>
 
 </body>
