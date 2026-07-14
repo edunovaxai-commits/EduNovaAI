@@ -66,3 +66,18 @@ footer{
 button{
     width:250px;
 }
+nav{
+    background:#111827;
+    padding:15px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:15px;
+    font-size:18px;
+}
+
+nav a:hover{
+    color:#60a5fa;
+}
