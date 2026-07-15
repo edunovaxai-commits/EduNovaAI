@@ -644,3 +644,33 @@ link.download = "EduNovaAI_ChatHistory.txt";
 link.click();
 
 }
+function showNotes(subject){
+
+let notes = "";
+
+switch(subject){
+
+case "html":
+notes = "<h2>HTML</h2><p>HTML is used to create the structure of web pages.</p>";
+break;
+
+case "css":
+notes = "<h2>CSS</h2><p>CSS is used to style web pages.</p>";
+break;
+
+case "javascript":
+notes = "<h2>JavaScript</h2><p>JavaScript makes websites interactive.</p>";
+break;
+
+case "python":
+notes = "<h2>Python</h2><p>Python is used for AI, Data Science and Web Development.</p>";
+break;
+
+default:
+notes = "Notes not available.";
+
+}
+
+document.getElementById("notes").innerHTML = notes;
+
+}
