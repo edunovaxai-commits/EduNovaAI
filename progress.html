@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduNova AI Progress</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>📊 Student Progress</h1>
+
+<p><b>Name:</b> <span id="name"></span></p>
+
+<p><b>Quiz Score:</b> <span id="score"></span>/3</p>
+
+<a href="dashboard.html">
+<button>🏠 Back to Dashboard</button>
+</a>
+
+<script>
+document.getElementById("name").innerHTML =
+localStorage.getItem("studentName") || "Student";
+
+document.getElementById("score").innerHTML =
+localStorage.getItem("quizScore") || "0";
+</script>
+
+</body>
+</html>
