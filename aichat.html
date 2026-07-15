@@ -1,34 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Doubt Solver - EduNova AI</title>
+<title>EduNova AI Chat</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>🤖 AI Doubt Solver</h1>
+<h1>🤖 EduNova AI Assistant</h1>
 
-<p>Ask your study question below.</p>
+<p>Ask anything about Programming, Computer Science or Technology.</p>
 
-<textarea id="question" placeholder="Ask your question here..." rows="5" cols="35"></textarea>
+<textarea id="question"
+placeholder="Type your question here..."
+rows="6"
+cols="40"></textarea>
+
+<br><br>
+
+<button onclick="askAI()">🚀 Ask AI</button>
+
+<button onclick="clearChat()">🗑 Clear</button>
 
 <br><br>
 
-<button onclick="askAI()">Ask AI</button>
+<h2>Answer</h2>
 
-<br><br>
+<div id="answer"
+style="
+border:1px solid #ccc;
+padding:15px;
+border-radius:10px;
+min-height:120px;
+background:#f5f5f5;">
+Waiting for your question...
+</div>
 
-<h3>Answer:</h3>
-
-<p id="answer"></p>
-
-<br><br>
+<br>
 
 <a href="dashboard.html">
-<button>🏠 Back to Dashboard</button>
+<button>🏠 Dashboard</button>
 </a>
 
 <script src="script.js"></script>
