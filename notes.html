@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,31 +10,48 @@
 <body>
 
 <header>
-<h1>📚 AI Notes</h1>
-<p>Select your subject</p>
+    <h1>📚 EduNova AI Notes</h1>
+    <p>Select a subject to view notes</p>
 </header>
 
 <section>
 
-<button>BCA</button>
+    <button onclick="showNotes('bca')">🎓 BCA</button>
+    <br><br>
 
-<br><br>
+    <button onclick="showNotes('cs')">💻 Computer Science</button>
+    <br><br>
 
-<button>Computer Science</button>
+    <button onclick="showNotes('ds')">📊 Data Science</button>
+    <br><br>
 
-<br><br>
+    <button onclick="showNotes('python')">🐍 Python</button>
+    <br><br>
 
-<button>Data Science</button>
+    <button onclick="showNotes('dbms')">🗄️ DBMS</button>
+    <br><br>
 
-<br><br>
+    <button onclick="showNotes('os')">🖥️ Operating System</button>
+    <br><br>
 
-<button>Python</button>
+    <button onclick="showNotes('cn')">🌐 Computer Network</button>
 
-<br><br>
+    <hr>
 
-<button>DBMS</button>
+    <div id="notes">
+        <h2>Welcome!</h2>
+        <p>Click any subject button to view study notes.</p>
+    </div>
+
+    <br>
+
+    <a href="dashboard.html">
+        <button>🏠 Back to Dashboard</button>
+    </a>
 
 </section>
+
+<script src="script.js"></script>
 
 </body>
 </html>
