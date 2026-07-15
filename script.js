@@ -708,3 +708,128 @@ notes="Notes not available.";
 document.getElementById("notes").innerHTML=notes;
 
 }
+
+function showNotes(subject){
+
+let notes="";
+
+switch(subject){
+
+case "bca":
+notes=`
+<h2>🎓 BCA</h2>
+<p>BCA (Bachelor of Computer Applications) is a 3-year undergraduate course focused on programming, databases, networking, software engineering, web development and artificial intelligence.</p>
+`;
+break;
+
+case "cs":
+notes=`
+<h2>💻 Computer Science</h2>
+<p>Computer Science is the study of computers, programming, algorithms, operating systems, databases, networking, cybersecurity and artificial intelligence.</p>
+`;
+break;
+
+case "ds":
+notes=`
+<h2>📊 Data Science</h2>
+<p>Data Science is the process of collecting, cleaning, analyzing and visualizing data to make better decisions using statistics, machine learning and AI.</p>
+`;
+break;
+
+case "python":
+notes=`
+<h2>🐍 Python</h2>
+<p>Python is an easy-to-learn programming language used in AI, Machine Learning, Data Science, Web Development, Automation and Software Development.</p>
+`;
+break;
+
+case "dbms":
+notes=`
+<h2>🗄️ DBMS</h2>
+<p>DBMS (Database Management System) is software used to store, organize, retrieve and manage data efficiently.</p>
+
+<b>Examples:</b>
+<ul>
+<li>MySQL</li>
+<li>Oracle</li>
+<li>SQL Server</li>
+<li>PostgreSQL</li>
+</ul>
+`;
+break;
+
+case "os":
+notes=`
+<h2>🖥️ Operating System</h2>
+<p>An Operating System manages hardware, software, memory, files and processes.</p>
+
+<b>Examples:</b>
+<ul>
+<li>Windows</li>
+<li>Linux</li>
+<li>macOS</li>
+<li>Android</li>
+</ul>
+`;
+break;
+
+case "cn":
+notes=`
+<h2>🌐 Computer Network</h2>
+<p>A Computer Network connects computers to share data and resources.</p>
+
+<b>Types:</b>
+<ul>
+<li>LAN</li>
+<li>MAN</li>
+<li>WAN</li>
+</ul>
+`;
+break;
+
+case "html":
+notes=`
+<h2>🌍 HTML</h2>
+<p>HTML (HyperText Markup Language) creates the structure of web pages using elements like headings, paragraphs, images, links and tables.</p>
+`;
+break;
+
+case "css":
+notes=`
+<h2>🎨 CSS</h2>
+<p>CSS (Cascading Style Sheets) is used to style web pages by changing colors, fonts, layouts, spacing and animations.</p>
+`;
+break;
+
+case "javascript":
+notes=`
+<h2>⚡ JavaScript</h2>
+<p>JavaScript is used to make websites interactive by handling events, forms, animations and APIs.</p>
+`;
+break;
+
+case "java":
+notes=`
+<h2>☕ Java</h2>
+<p>Java is an object-oriented programming language used for Android apps, enterprise software and web applications.</p>
+`;
+break;
+
+case "ai":
+notes=`
+<h2>🤖 Artificial Intelligence</h2>
+<p>Artificial Intelligence enables computers to perform tasks that normally require human intelligence such as learning, reasoning and decision making.</p>
+`;
+break;
+
+default:
+notes=`
+<h2>📚 Notes</h2>
+<p>Notes are not available for this subject.</p>
+`;
+
+}
+
+document.getElementById("notes").innerHTML = notes;
+
+}
