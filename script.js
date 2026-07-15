@@ -836,23 +836,35 @@ document.getElementById("notes").innerHTML = notes;
 
 function checkQuiz(){
 
-let score=0;
+let score = 0;
 
-if(document.querySelector('input[name="q1"]:checked')?.value=="a"){
-score++;
+if(document.querySelector('input[name="q1"]:checked')?.value == "a"){
+    score++;
 }
 
-if(document.querySelector('input[name="q2"]:checked')?.value=="b"){
-score++;
+if(document.querySelector('input[name="q2"]:checked')?.value == "b"){
+    score++;
 }
 
-if(document.querySelector('input[name="q3"]:checked')?.value=="c"){
-score++;
+if(document.querySelector('input[name="q3"]:checked')?.value == "c"){
+    score++;
+}
+
+let message = "";
+
+if(score == 3){
+    message = "🏆 Excellent! Perfect Score!";
+}else if(score == 2){
+    message = "👍 Good Job! Keep Practicing.";
+}else if(score == 1){
+    message = "🙂 You need more practice.";
+}else{
+    message = "📚 Study more and try again.";
 }
 
 document.getElementById("score").innerHTML =
-"🎉 Your Score: "+score+"/3";
+"🎉 Your Score: " + score + "/3<br>" + message;
 
-localStorage.setItem("quizScore",score);
+localStorage.setItem("quizScore", score);
 
 }
