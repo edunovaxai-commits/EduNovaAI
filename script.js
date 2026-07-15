@@ -526,7 +526,67 @@ answer = "HTTPS (HyperText Transfer Protocol Secure) is the secure version of HT
 answer = "Sorry! I don't know the answer yet.";
 
 }
-
+saveChat(question, answer);
 document.getElementById("answer").innerHTML = answer;
 
+}
+
+
+
+function clearChat(){
+
+document.getElementById("question").value = "";
+
+document.getElementById("answer").innerHTML =
+"Waiting for your question...";
+
+}
+
+
+function saveChat(question, answer){
+
+    let chats = JSON.parse(localStorage.getItem("chatHistory")) || [];
+
+    chats.push({
+        question: question,
+        answer: answer,
+        time: new Date().toLocaleString()
+    });
+
+    localStorage.setItem("chatHistory", JSON.stringify(chats));
+}
+
+function clearChat(){
+
+    document.getElementById("question").value = "";
+
+    document.getElementById("answer").innerHTML =
+    "Waiting for your question...";
+}
+
+function showHistory(){
+
+    let chats = JSON.parse(localStorage.getItem("chatHistory")) || [];
+
+    let output = "";
+
+    if(chats.length==0){
+
+        output = "No chat history found.";
+
+    }else{
+
+        for(let i=0;i<chats.length;i++){
+
+            output +=
+            "<hr>" +
+            "<b>Q:</b> " + chats[i].question + "<br>" +
+            "<b>A:</b> " + chats[i].answer + "<br>" +
+            "<small>" + chats[i].time + "</small><br>";
+
+        }
+
+    }
+
+    document.getElementById("answer").innerHTML = output;
 }
