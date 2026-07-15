@@ -590,3 +590,57 @@ function showHistory(){
 
     document.getElementById("answer").innerHTML = output;
 }
+
+
+
+
+// Voice Input
+function startVoice(){
+
+if(!('webkitSpeechRecognition' in window)){
+    alert("Voice Recognition is not supported in this browser.");
+    return;
+}
+
+let recognition = new webkitSpeechRecognition();
+
+recognition.lang = "en-IN";
+
+recognition.onresult = function(event){
+
+document.getElementById("question").value =
+event.results[0][0].transcript;
+
+};
+
+recognition.start();
+
+}
+
+// Copy Answer
+function copyAnswer(){
+
+let text = document.getElementById("answer").innerText;
+
+navigator.clipboard.writeText(text);
+
+alert("Answer copied successfully!");
+
+}
+
+// Download Chat History
+function downloadHistory(){
+
+let chats = localStorage.getItem("chatHistory") || "No History";
+
+let blob = new Blob([chats], {type:"text/plain"});
+
+let link = document.createElement("a");
+
+link.href = URL.createObjectURL(blob);
+
+link.download = "EduNovaAI_ChatHistory.txt";
+
+link.click();
+
+}
