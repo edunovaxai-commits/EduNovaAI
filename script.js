@@ -868,3 +868,8 @@ document.getElementById("score").innerHTML =
 localStorage.setItem("quizScore", score);
 
 }
+function downloadCertificate(){
+
+    alert("PDF Download feature will be added in the next version.");
+
+}
