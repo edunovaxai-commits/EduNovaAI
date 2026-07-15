@@ -674,3 +674,37 @@ notes = "Notes not available.";
 document.getElementById("notes").innerHTML = notes;
 
 }
+function showNotes(subject){
+
+let notes="";
+
+switch(subject){
+
+case "bca":
+notes="<h2>BCA</h2><p>BCA (Bachelor of Computer Applications) is a 3-year undergraduate course focused on programming, databases, networking and software development.</p>";
+break;
+
+case "cs":
+notes="<h2>Computer Science</h2><p>Computer Science covers programming, algorithms, operating systems, DBMS, networking and AI.</p>";
+break;
+
+case "ds":
+notes="<h2>Data Science</h2><p>Data Science involves collecting, analyzing and interpreting data using statistics, machine learning and AI.</p>";
+break;
+
+case "python":
+notes="<h2>Python</h2><p>Python is widely used in AI, Data Science, Automation and Web Development.</p>";
+break;
+
+case "dbms":
+notes="<h2>DBMS</h2><p>DBMS is software used to store, organize and manage data efficiently.</p>";
+break;
+
+default:
+notes="Notes not available.";
+
+}
+
+document.getElementById("notes").innerHTML=notes;
+
+}
