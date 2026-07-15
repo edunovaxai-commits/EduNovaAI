@@ -873,3 +873,27 @@ function downloadCertificate(){
     alert("PDF Download feature will be added in the next version.");
 
 }
+
+function searchNotes(){
+
+let input = document.getElementById("searchBox").value.toLowerCase();
+
+let notes = document.getElementById("notes");
+
+if(notes.innerText.toLowerCase().includes(input)){
+
+notes.style.display = "block";
+
+}else{
+
+notes.style.display = "none";
+
+}
+
+if(input==""){
+
+notes.style.display = "block";
+
+}
+
+}
