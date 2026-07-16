@@ -9,9 +9,12 @@
 <title>EduNova AI</title>
 
 <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
+  
+<link rel="manifest" href="manifest.json">
+
 <meta name="theme-color" content="#2563eb">
 
+<link rel="icon" href="icon-192.png">
 </head>
 
 <body>
@@ -265,15 +268,33 @@ Developed by Mayur Sonawane
 </footer>
 
 <script src="script.js"></script>
+
+
   <script>
 
 if("serviceWorker" in navigator){
 
-navigator.serviceWorker.register("sw.js");
+window.addEventListener("load",()=>{
+
+navigator.serviceWorker.register("sw.js")
+
+.then(()=>{
+
+console.log("Service Worker Registered");
+
+})
+
+.catch(err=>{
+
+console.log(err);
+
+});
+
+});
 
 }
 
-  </script>
+</script>
 
 </body>
 
