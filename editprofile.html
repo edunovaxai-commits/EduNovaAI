@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Profile - EduNova AI</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h1>✏️ Edit Profile</h1>
+<p>Update your information</p>
+</header>
+
+<section>
+
+<input type="text" id="name" placeholder="Full Name">
+
+<br><br>
+
+<input type="email" id="email" placeholder="Email Address">
+
+<br><br>
+
+<input type="tel" id="mobile" placeholder="Mobile Number" maxlength="10">
+
+<br><br>
+
+<button onclick="saveProfile()">💾 Save Changes</button>
+
+<br><br>
+
+<a href="profile.html">
+<button>👤 Back to Profile</button>
+</a>
+
+</section>
+
+<script src="script.js"></script>
+
+<script>
+
+document.getElementById("name").value =
+localStorage.getItem("studentName") || "";
+
+document.getElementById("email").value =
+localStorage.getItem("studentEmail") || "";
+
+document.getElementById("mobile").value =
+localStorage.getItem("studentMobile") || "";
+
+</script>
+
+</body>
+</html>
