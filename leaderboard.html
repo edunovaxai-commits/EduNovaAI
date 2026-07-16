@@ -9,33 +9,124 @@
 
 <body>
 
+<header>
 <h1>🏆 Leaderboard</h1>
+<p>Top Student Rankings</p>
+</header>
 
-<table border="1" cellpadding="10">
+<section>
+
+<div class="card">
+
+<h2>🥇 Student Ranking</h2>
+
+<table>
+
 <tr>
-<th>Student</th>
+<th>Rank</th>
+<th>Name</th>
 <th>Score</th>
 </tr>
 
 <tr>
-<td id="student"></td>
-<td id="marks"></td>
+<td>🥇 1</td>
+<td id="leaderName">Student</td>
+<td id="leaderScore">0/10</td>
+</tr>
+
+<tr>
+<td>🥈 2</td>
+<td>Demo Student</td>
+<td>8/10</td>
+</tr>
+
+<tr>
+<td>🥉 3</td>
+<td>Guest User</td>
+<td>6/10</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>AI Learner</td>
+<td>5/10</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Computer Student</td>
+<td>4/10</td>
 </tr>
 
 </table>
 
 <br>
 
+<h3 id="rankMessage"></h3>
+
+<br>
+
+<button onclick="refreshLeaderboard()">
+🔄 Refresh Leaderboard
+</button>
+
+<br><br>
+
 <a href="dashboard.html">
 <button>🏠 Back to Dashboard</button>
 </a>
 
-<script>
-document.getElementById("student").innerHTML =
-localStorage.getItem("studentName") || "Student";
+</div>
 
-document.getElementById("marks").innerHTML =
-(localStorage.getItem("quizScore") || "0") + "/3";
+</section>
+
+<footer>
+
+<p>© 2026 EduNova AI</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+
+let name = localStorage.getItem("studentName") || "Student";
+let score = localStorage.getItem("quizScore") || "0";
+
+document.getElementById("leaderName").innerHTML = name;
+document.getElementById("leaderScore").innerHTML = score + "/10";
+
+if(parseInt(score) >= 9){
+
+document.getElementById("rankMessage").innerHTML =
+"🏆 Excellent! You are among the Top Performers.";
+
+}
+else if(parseInt(score) >= 7){
+
+document.getElementById("rankMessage").innerHTML =
+"🥇 Great Job! Keep improving.";
+
+}
+else if(parseInt(score) >= 5){
+
+document.getElementById("rankMessage").innerHTML =
+"👍 Good Progress. Practice More.";
+
+}
+else{
+
+document.getElementById("rankMessage").innerHTML =
+"📚 Keep Learning to improve your rank.";
+
+}
+
+function refreshLeaderboard(){
+
+location.reload();
+
+}
+
 </script>
 
 </body>
