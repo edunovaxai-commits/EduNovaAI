@@ -1,56 +1,156 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Settings - EduNova AI</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduNova AI Settings</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+<header>
 <h1>⚙️ Settings</h1>
+<p>Customize Your EduNova AI Experience</p>
+</header>
+
+<section>
+
+<div class="card">
+
+<h2>🎨 Theme</h2>
+
+<select id="themeSelect">
+
+<option value="light">☀️ Light Mode</option>
+
+<option value="dark">🌙 Dark Mode</option>
+
+</select>
+
+<br><br>
+
+<button onclick="applyTheme()">
+💾 Save Theme
+</button>
+
+<hr><br>
+
+<h2>🔔 Notifications</h2>
+
+<label>
+
+<input type="checkbox" id="notifications">
+
+ Enable Notifications
+
+</label>
+
+<br><br>
+
+<button onclick="saveNotifications()">
+💾 Save Notification Settings
+</button>
+
+<hr><br>
+
+<h2>👤 Account</h2>
+
+<a href="profile.html">
+<button>👤 View Profile</button>
+</a>
+
+<br><br>
+
+<button onclick="clearData()">
+🗑 Clear All Data
+</button>
+
+<br><br>
+
+<button onclick="logout()">
+🚪 Logout
+</button>
+
+<br><br>
 
 <a href="dashboard.html">
-    <button>🏠 Back to Dashboard</button>
+<button>🏠 Back to Dashboard</button>
 </a>
-<br><br>
-<h3>Appearance</h3>
 
-<button onclick="alert('Dark Mode coming soon!')">
-🌙 Dark Mode
-</button>
-  <br><br>
-<button onclick="toggleTheme()">🌙 Toggle Dark Mode</button>
-<h3>Account</h3>
+</div>
 
-<button onclick="window.location.href='profile.html'">
-👤 My Profile
-</button>
-  <br><br>
+</section>
 
-<button onclick="localStorage.clear(); window.location.href='signup.html';">
-🗑️ Reset Account
-</button>
-  <br><br>
+<footer>
 
-<p style="color:red;">
-⚠️ Reset Account केल्यावर तुमचा डेटा हटवला जाईल.
-</p>
-<p>Version: EduNova AI v1.0</p>
-  <p>Developed by Mayur Sonawane</p>
-  <p>© 2026 EduNova AI. All Rights Reserved.</p>
-  <hr>
+<p>© 2026 EduNova AI</p>
 
-<p>Need Help?</p>
-
-<button onclick="window.location.href='mailto:support@edunovaai.com'">
-📧 Contact Support
-</button>
-  <br><br>
-
-<button onclick="window.open('https://github.com/edunovaxai-commits/EduNovaAI', '_blank')">
-💻 GitHub
-</button>
-<button onclick="logout()">🚪 Logout</button>
+</footer>
 
 <script src="script.js"></script>
+
+<script>
+
+// Load Saved Theme
+let savedTheme = localStorage.getItem("theme") || "light";
+document.getElementById("themeSelect").value = savedTheme;
+
+let savedNotification = localStorage.getItem("notifications");
+
+if(savedNotification=="true"){
+document.getElementById("notifications").checked=true;
+}
+
+// Theme
+function applyTheme(){
+
+let theme=document.getElementById("themeSelect").value;
+
+localStorage.setItem("theme",theme);
+
+if(theme=="dark"){
+document.body.classList.add("dark-mode");
+}else{
+document.body.classList.remove("dark-mode");
+}
+
+alert("Theme Saved Successfully!");
+
+}
+
+// Notification
+function saveNotifications(){
+
+let enabled=document.getElementById("notifications").checked;
+
+localStorage.setItem("notifications",enabled);
+
+alert("Notification Settings Saved!");
+
+}
+
+// Clear Data
+function clearData(){
+
+if(confirm("Are you sure you want to clear all local data?")){
+
+localStorage.clear();
+
+alert("All Data Cleared Successfully!");
+
+window.location.href="login.html";
+
+}
+
+}
+
+// Apply Theme Automatically
+if(savedTheme=="dark"){
+document.body.classList.add("dark-mode");
+}
+
+</script>
+
 </body>
 </html>
