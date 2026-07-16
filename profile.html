@@ -1,86 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Profile - EduNova AI</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile - EduNova AI</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+<header>
 <h1>👤 Student Profile</h1>
+</header>
 
-<img src="https://via.placeholder.com/120" alt="Profile Photo" width="120">
-  <br><br>
-
-<input type="file" id="profilePhoto">
-    <br><br>
+<section>
 
 <img id="preview"
-src="https://via.placeholder.com/120"
-width="120"
-style="border-radius:50%; border:3px solid #4CAF50; object-fit:cover;">
+src="https://via.placeholder.com/150"
+width="150"
+height="150"
+style="border-radius:50%;border:4px solid #2563eb;object-fit:cover;">
+
+<br><br>
+
+<input type="file" id="profilePhoto" accept="image/*">
+
+<br><br>
+
 <p><b>Name:</b> <span id="name"></span></p>
 <p><b>Email:</b> <span id="email"></span></p>
 <p><b>📱 Mobile:</b> <span id="mobile"></span></p>
-    <p><b>Status:</b> Active ✅</p>
-    <p><b>Member Since:</b> 2026</p>
-    <p><b>Total Quizzes:</b> 0</p>
-    <p><b>Highest Score:</b> 0</p>
-    <p><b>Courses Enrolled:</b> 1</p>
-    <p><b>Achievements:</b> 🏅 Beginner Learner</p>
-    <p><b>Current Level:</b> Level 1 ⭐</p>
-    <p><b>Certificates Earned:</b> 0 📜</p>
-    <p><b>Learning Streak:</b> 🔥 1 Day</p>
-    <p><b>Last Login:</b> Today</p>
-    <p><b>Theme:</b> Light ☀️</p>
-    <p><b>Account Type:</b> Student 🎓</p>
+
+<p><b>Status:</b> ✅ Active</p>
+<p><b>Member Since:</b> 2026</p>
+<p><b>Total Quizzes:</b> <span id="quiz">0</span></p>
+<p><b>Highest Score:</b> <span id="score">0</span></p>
+<p><b>Achievements:</b> 🏅 Beginner Learner</p>
+
 <br>
-    
-<button onclick="alert('This feature will be available soon!')">
+
+<button onclick="window.location.href='editprofile.html'">
 ✏️ Edit Profile
 </button>
 
 <br><br>
 
-<button onclick="alert('Change Password feature coming soon!')">
+<button onclick="alert('Coming Soon')">
 🔒 Change Password
 </button>
-    
-    <br><br>
+
+<br><br>
 
 <a href="dashboard.html">
-    <button>🏠 Back to Dashboard</button>
+<button>🏠 Dashboard</button>
 </a>
-<button onclick="logout()">Logout</button>
+
+<button onclick="logout()">🚪 Logout</button>
+
+</section>
+
 <script src="script.js"></script>
 
 <script>
-let savedPhoto = localStorage.getItem("profilePhoto");
 
-if(savedPhoto){
+document.getElementById("name").innerHTML =
+localStorage.getItem("studentName") || "Student";
 
-document.getElementById("preview").src = savedPhoto;
+document.getElementById("email").innerHTML =
+localStorage.getItem("studentEmail") || "-";
 
-document.getElementById("preview").style.display = "block";
-
-}
-    
-document.getElementById("name").innerHTML = localStorage.getItem("studentName");
-document.getElementById("email").innerHTML = localStorage.getItem("studentEmail");
 document.getElementById("mobile").innerHTML =
-localStorage.getItem("studentMobile");
-document.getElementById("profilePhoto").addEventListener("change", function(event){
+localStorage.getItem("studentMobile") || "-";
 
-let file = event.target.files[0];
+document.getElementById("score").innerHTML =
+localStorage.getItem("quizScore") || "0";
 
-if(file){
+let saved = localStorage.getItem("profilePhoto");
 
-document.getElementById("preview").src = URL.createObjectURL(file);
-
-document.getElementById("preview").style.display = "block";
-localStorage.setItem("profilePhoto", URL.createObjectURL(file));
+if(saved){
+document.getElementById("preview").src = saved;
 }
+
+document.getElementById("profilePhoto").addEventListener("change",function(){
+
+let file=this.files[0];
+
+if(!file) return;
+
+let reader=new FileReader();
+
+reader.onload=function(e){
+
+document.getElementById("preview").src=e.target.result;
+
+localStorage.setItem("profilePhoto",e.target.result);
+
+};
+
+reader.readAsDataURL(file);
 
 });
+
 </script>
 
 </body>
