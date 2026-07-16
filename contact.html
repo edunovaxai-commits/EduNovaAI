@@ -1,0 +1,113 @@
+<!-- ========================================= -->
+<!-- NEW FILE : contact.html -->
+<!-- ========================================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact - EduNova AI</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>📞 Contact Us</h1>
+
+<p>We're here to help</p>
+
+</header>
+
+<section>
+
+<div class="card">
+
+<h2>📩 Send Your Message</h2>
+
+<input
+type="text"
+id="contactName"
+placeholder="Your Name">
+
+<br>
+
+<input
+type="email"
+id="contactEmail"
+placeholder="Your Email">
+
+<br>
+
+<textarea
+id="contactMessage"
+rows="6"
+placeholder="Write your message here..."></textarea>
+
+<br><br>
+
+<button onclick="sendMessage()">
+📨 Send Message
+</button>
+
+<br><br>
+
+<h3>📧 Contact Information</h3>
+
+<p><b>Email:</b> support@edunovaai.com</p>
+
+<p><b>Developer:</b> Mayur Sonawane</p>
+
+<p><b>Platform:</b> EduNova AI Ultimate v10</p>
+
+<br>
+
+<a href="dashboard.html">
+<button>🏠 Back to Dashboard</button>
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 EduNova AI</p>
+
+</footer>
+
+<script>
+
+function sendMessage(){
+
+let name=document.getElementById("contactName").value.trim();
+let email=document.getElementById("contactEmail").value.trim();
+let message=document.getElementById("contactMessage").value.trim();
+
+if(name=="" || email=="" || message==""){
+
+alert("Please fill all fields.");
+
+return;
+
+}
+
+alert("✅ Thank you! Your message has been received.");
+
+document.getElementById("contactName").value="";
+document.getElementById("contactEmail").value="";
+document.getElementById("contactMessage").value="";
+
+}
+
+</script>
+
+</body>
+</html>
