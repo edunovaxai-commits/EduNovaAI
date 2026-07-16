@@ -6,24 +6,133 @@
 <title>EduNova AI Progress</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+<header>
 <h1>📊 Student Progress</h1>
+<p>Track Your Learning Journey</p>
+</header>
 
-<p><b>Name:</b> <span id="name"></span></p>
+<section>
 
-<p><b>Quiz Score:</b> <span id="score"></span>/3</p>
+<div class="card">
+
+<h2>👨‍🎓 Student Details</h2>
+
+<p><b>Name:</b> <span id="studentName"></span></p>
+
+<p><b>Email:</b> <span id="studentEmail"></span></p>
+
+<p><b>Quiz Score:</b> <span id="studentScore"></span></p>
+
+<p><b>Progress:</b></p>
+
+<div style="width:100%;background:#ddd;border-radius:10px;overflow:hidden;height:30px;">
+
+<div id="progressBar"
+style="height:30px;width:0%;background:#2563eb;color:white;line-height:30px;text-align:center;">
+0%
+</div>
+
+</div>
+
+<br>
+
+<h3 id="progressMessage"></h3>
+
+<br>
+
+<button onclick="resetProgress()">
+🔄 Reset Progress
+</button>
+
+<br><br>
 
 <a href="dashboard.html">
-<button>🏠 Back to Dashboard</button>
+<button>
+🏠 Back to Dashboard
+</button>
 </a>
 
-<script>
-document.getElementById("name").innerHTML =
-localStorage.getItem("studentName") || "Student";
+</div>
 
-document.getElementById("score").innerHTML =
-localStorage.getItem("quizScore") || "0";
+</section>
+
+<footer>
+
+<p>© 2026 EduNova AI</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+
+let name=localStorage.getItem("studentName") || "Student";
+
+let email=localStorage.getItem("studentEmail") || "-";
+
+let score=parseInt(localStorage.getItem("quizScore")) || 0;
+
+document.getElementById("studentName").innerHTML=name;
+
+document.getElementById("studentEmail").innerHTML=email;
+
+document.getElementById("studentScore").innerHTML=score+"/10";
+
+let percent=score*10;
+
+document.getElementById("progressBar").style.width=percent+"%";
+
+document.getElementById("progressBar").innerHTML=percent+"%";
+
+let msg="";
+
+if(percent==100){
+
+msg="🏆 Excellent Performance!";
+
+}
+
+else if(percent>=80){
+
+msg="🥇 Very Good!";
+
+}
+
+else if(percent>=60){
+
+msg="👍 Good Progress";
+
+}
+
+else if(percent>=40){
+
+msg="🙂 Keep Learning";
+
+}
+
+else{
+
+msg="📚 Practice More";
+
+}
+
+document.getElementById("progressMessage").innerHTML=msg;
+
+function resetProgress(){
+
+if(confirm("Reset Progress?")){
+
+localStorage.setItem("quizScore",0);
+
+location.reload();
+
+}
+
+}
+
 </script>
 
 </body>
