@@ -9,40 +9,117 @@
 
 <body>
 
-<h1>🏆 Certificate</h1>
+<header>
+<h1>🏆 Certificate of Achievement</h1>
+<p>EduNova AI Learning Platform</p>
+</header>
 
-<div style="border:4px solid green;padding:20px;text-align:center;">
+<section>
 
-<h2>Certificate of Achievement</h2>
+<div class="card" id="certificate">
 
-<p>This Certificate is proudly presented to</p>
+<h2>🎓 Certificate</h2>
 
-<h2 id="studentName"></h2>
+<hr>
 
-<p>for successfully completing the EduNova AI Mock Test.</p>
+<h3>This Certificate is Proudly Presented To</h3>
 
-<h3 id="studentScore"></h3>
+<h1 id="studentName"
+style="color:#2563eb;font-size:35px;">
+Student
+</h1>
+
+<p>For Successfully Completing the EduNova AI Mock Test.</p>
+
+<br>
+
+<h2 id="studentScore">
+Score : 0/10
+</h2>
+
+<br>
+
+<p><b>Achievement:</b> Beginner Learner 🏅</p>
+
+<p><b>Date:</b>
+<span id="todayDate"></span>
+</p>
+
+<br><br>
+
+<table>
+
+<tr>
+
+<th>Instructor</th>
+
+<th>Platform</th>
+
+</tr>
+
+<tr>
+
+<td>EduNova AI Team</td>
+
+<td>EduNova AI</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<h2 style="color:green;">
+✔ Verified Certificate
+</h2>
 
 </div>
+
 <br>
 
-<button onclick="window.print()">🖨️ Print Certificate</button>
+<button onclick="printCertificate()">
+🖨 Print Certificate
+</button>
 
-<button onclick="downloadCertificate()">📄 Download Certificate</button>
-<br>
+<button onclick="downloadCertificate()">
+⬇ Download Certificate
+</button>
+
+<br><br>
 
 <a href="dashboard.html">
-<button>🏠 Back to Dashboard</button>
+<button>
+🏠 Dashboard
+</button>
 </a>
+
+</section>
+
+<footer>
+
+<p>© 2026 EduNova AI</p>
+
+</footer>
 
 <script src="script.js"></script>
 
 <script>
+
 document.getElementById("studentName").innerHTML =
-localStorage.getItem("studentName");
+localStorage.getItem("studentName") || "Student";
 
 document.getElementById("studentScore").innerHTML =
-"Score: " + localStorage.getItem("quizScore") + "/3";
+"Score : " + (localStorage.getItem("quizScore") || "0") + "/10";
+
+document.getElementById("todayDate").innerHTML =
+new Date().toLocaleDateString();
+
+function downloadCertificate(){
+
+window.print();
+
+}
+
 </script>
 
 </body>
