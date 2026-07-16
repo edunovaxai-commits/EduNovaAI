@@ -3,62 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Notes - EduNova AI</title>
+<title>EduNova AI Notes</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-    <input
+<h1>📚 EduNova AI Notes</h1>
+<p>Choose a subject and start learning</p>
+</header>
+
+<section>
+
+<div class="card">
+
+<input
 type="text"
 id="searchBox"
 placeholder="🔍 Search Notes..."
 onkeyup="searchNotes()">
 
 <br><br>
-    <h1>📚 EduNova AI Notes</h1>
-    <p>Select a subject to view notes</p>
-</header>
 
-<section>
+<button onclick="showNotes('html')">🌐 HTML</button>
 
-    <button onclick="showNotes('bca')">🎓 BCA</button>
-    <br><br>
+<button onclick="showNotes('css')">🎨 CSS</button>
 
-    <button onclick="showNotes('cs')">💻 Computer Science</button>
-    <br><br>
+<button onclick="showNotes('javascript')">⚡ JavaScript</button>
 
-    <button onclick="showNotes('ds')">📊 Data Science</button>
-    <br><br>
+<button onclick="showNotes('python')">🐍 Python</button>
 
-    <button onclick="showNotes('python')">🐍 Python</button>
-    <br><br>
+<button onclick="showNotes('java')">☕ Java</button>
 
-    <button onclick="showNotes('dbms')">🗄️ DBMS</button>
-    <br><br>
+<button onclick="showNotes('dbms')">🗄 DBMS</button>
 
-    <button onclick="showNotes('os')">🖥️ Operating System</button>
-    <br><br>
+<button onclick="showNotes('os')">🖥 Operating System</button>
 
-    <button onclick="showNotes('cn')">🌐 Computer Network</button>
+<button onclick="showNotes('cn')">🌐 Computer Network</button>
 
-    <hr>
+<button onclick="showNotes('ds')">📊 Data Science</button>
 
-    <div id="notes">
-        <h2>Welcome!</h2>
-        <p>Click any subject button to view study notes.</p>
-    </div>
+<button onclick="showNotes('ai')">🤖 Artificial Intelligence</button>
 
-    <br>
+<br><br>
 
-    <a href="dashboard.html">
-        <button>🏠 Back to Dashboard</button>
-    </a>
+<div id="notes">
+
+<h2>📖 Welcome to EduNova AI Notes</h2>
+
+<p>
+Select any subject above to read short notes.
+</p>
+
+<p>
+You can also use the search box to search inside the notes.
+</p>
+
+</div>
+
+<br>
+
+<button onclick="window.print()">
+🖨 Print Notes
+</button>
+
+<button onclick="downloadNotes()">
+⬇ Download Notes
+</button>
+
+<br><br>
+
+<a href="dashboard.html">
+<button>
+🏠 Dashboard
+</button>
+</a>
+
+</div>
 
 </section>
 
+<footer>
+
+<p>© 2026 EduNova AI</p>
+
+</footer>
+
 <script src="script.js"></script>
+
+<script>
+function downloadNotes(){
+
+let notes=document.getElementById("notes").innerText;
+
+let blob=new Blob([notes],{type:"text/plain"});
+
+let a=document.createElement("a");
+
+a.href=URL.createObjectURL(blob);
+
+a.download="EduNova_Notes.txt";
+
+a.click();
+
+}
+</script>
 
 </body>
 </html>
