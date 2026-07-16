@@ -4,42 +4,79 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login - EduNova AI</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
 <header>
-
-<h1>EduNova AI</h1>
-
+<h1>🎓 EduNova AI</h1>
+<p>Student Login</p>
 </header>
 
 <section>
 
-<h2>Student Login</h2>
+<div class="card">
 
-<input type="email" id="email" placeholder="Enter Email">
+<h2>Welcome Back 👋</h2>
+
+<input
+type="email"
+id="email"
+placeholder="Enter Email">
+
+<br>
+
+<input
+type="password"
+id="password"
+placeholder="Enter Password">
 
 <br><br>
 
-<input type="password" id="password" placeholder="Enter Password">
-<p id="error" style="color:red;"></p>
+<button onclick="login()">
+🔐 Login
+</button>
+
 <br><br>
 
-<button onclick="login()">Login</button>
-  <br><br>
-<button onclick="showPassword()">👁 Show Password</button>
-  <p>New Student?</p>
+<p>Don't have an account?</p>
 
 <a href="signup.html">
-<button>Create Account</button>
+<button>
+📝 Create Account
+</button>
 </a>
 
-</section>
-<script src="script.js"></script>
-</body>
+<br><br>
 
+<button onclick="guestLogin()">
+👤 Continue as Guest
+</button>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 EduNova AI</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+
+function guestLogin(){
+
+localStorage.setItem("studentName","Guest");
+
+window.location.href="dashboard.html";
+
+}
+
+</script>
+
+</body>
 </html>
