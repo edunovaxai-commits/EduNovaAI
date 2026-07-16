@@ -73,20 +73,16 @@ function signup() {
 let name = document.getElementById("name").value;
 let email = document.getElementById("email").value;
 let password = document.getElementById("password").value;
-
-if(name=="" || email=="" || password==""){
-
-alert("Please fill all fields");
-
-}else{
+let mobile = document.getElementById("mobile").value;
 
 localStorage.setItem("studentName", name);
 localStorage.setItem("studentEmail", email);
 localStorage.setItem("studentPassword", password);
+localStorage.setItem("studentMobile", mobile);
 
 alert("Account Created Successfully!");
 
-window.location.href="login.html";
+window.location.href = "login.html";
 
 }
 
