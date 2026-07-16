@@ -9,41 +9,48 @@
 
 <body>
 
+<header>
 <h1>🤖 EduNova AI Assistant</h1>
+<p>Ask any Programming or Computer Science Question</p>
+</header>
 
-<p>Ask anything about Programming, Computer Science or Technology.</p>
+<section>
 
-<textarea id="question"
-placeholder="Type your question here..."
+<div class="card">
+
+<textarea
+id="question"
 rows="6"
-cols="40"></textarea>
+placeholder="Type your question here..."></textarea>
 
-<br><br>
+<br>
 
 <button onclick="askAI()">🚀 Ask AI</button>
-  <br><br>
 
 <button onclick="startVoice()">🎤 Voice</button>
-
-<button onclick="copyAnswer()">📋 Copy Answer</button>
-
-<button onclick="downloadHistory()">⬇ Download History</button>
-  <button onclick="showHistory()">📜 History</button>
 
 <button onclick="clearChat()">🗑 Clear</button>
 
 <br><br>
 
+<button onclick="showHistory()">📜 History</button>
+
+<button onclick="copyAnswer()">📋 Copy</button>
+
+<button onclick="downloadHistory()">⬇ Download</button>
+
+<br><br>
+
 <h2>Answer</h2>
 
-<div id="answer"
-style="
-border:1px solid #ccc;
-padding:15px;
-border-radius:10px;
-min-height:120px;
-background:#f5f5f5;">
-Waiting for your question...
+<div id="answer">
+
+Welcome to EduNova AI 👋
+
+Ask any programming question.
+
+</div>
+
 </div>
 
 <br>
@@ -51,6 +58,14 @@ Waiting for your question...
 <a href="dashboard.html">
 <button>🏠 Dashboard</button>
 </a>
+
+</section>
+
+<footer>
+
+<p>© 2026 EduNova AI</p>
+
+</footer>
 
 <script src="script.js"></script>
 
