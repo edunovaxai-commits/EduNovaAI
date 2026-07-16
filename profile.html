@@ -20,6 +20,7 @@ width="120"
 style="border-radius:50%; border:3px solid #4CAF50; object-fit:cover;">
 <p><b>Name:</b> <span id="name"></span></p>
 <p><b>Email:</b> <span id="email"></span></p>
+<p><b>📱 Mobile:</b> <span id="mobile"></span></p>
     <p><b>Status:</b> Active ✅</p>
     <p><b>Member Since:</b> 2026</p>
     <p><b>Total Quizzes:</b> 0</p>
@@ -65,7 +66,8 @@ document.getElementById("preview").style.display = "block";
     
 document.getElementById("name").innerHTML = localStorage.getItem("studentName");
 document.getElementById("email").innerHTML = localStorage.getItem("studentEmail");
-
+document.getElementById("mobile").innerHTML =
+localStorage.getItem("studentMobile");
 document.getElementById("profilePhoto").addEventListener("change", function(event){
 
 let file = event.target.files[0];
