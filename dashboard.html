@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,95 +10,93 @@
 <body>
 
 <header>
-<h1>🎓 EduNova AI</h1>
-<p>Student Dashboard</p>
+    <h1>🎓 EduNova AI</h1>
+    <p>Student Dashboard</p>
 </header>
 
 <section>
 
-<h2>Welcome to EduNova AI 🚀</h2>
+    <h2 id="welcome">Welcome 👋</h2>
 
-<p>Select a feature to continue your learning journey.</p>
-<section>
+    <p>Select a feature to continue your learning journey.</p>
 
-<h3>📈 Quick Stats</h3>
+    <hr>
 
-<p>📚 Notes Available: 7+</p>
+    <h3>📈 Quick Stats</h3>
 
-<p>🤖 AI Chat: Ready</p>
+    <p>📚 Notes Available: 7+</p>
+    <p>🤖 AI Chat: Ready</p>
+    <p>📝 Mock Tests: Available</p>
+    <p>🏆 Certificates: Enabled</p>
+    <p>📊 Progress Tracking: Active</p>
 
-<p>📝 Mock Tests: Available</p>
+    <hr>
 
-<p>🏆 Certificates: Enabled</p>
+    <a href="notes.html">
+        <button>📚 AI Notes</button>
+    </a>
 
-<p>📊 Progress Tracking: Active</p>
-
-</section>
-
-<a href="notes.html">
-<button>📚 AI Notes</button>
-</a>
-
-<br><br>
-
-<a href="quiz.html">
-<button>📝 Mock Test</button>
-</a>
-
-<br><br>
-
-<a href="aichat.html">
-<button>🤖 AI Doubt Solver</button>
-</a>
-
-<br><br>
-
-<button>📄 Previous Year Papers</button>
-
-<br><br>
-
-<a href="profile.html">
-    <button>👤 Profile</button>
-</a>
-<br><br>
-
-<a href="settings.html">
-    <button>⚙️ Settings</button>
-</a>
     <br><br>
 
-<a href="notes.html">
-<button>📚 Notes</button>
-</a>
+    <a href="quiz.html">
+        <button>📝 Mock Test</button>
+    </a>
 
-<a href="quiz.html">
-<button>📝 Mock Test</button>
-</a>
+    <br><br>
 
-<a href="certificate.html">
-<button>🏆 Certificate</button>
-</a>
+    <a href="aichat.html">
+        <button>🤖 AI Doubt Solver</button>
+    </a>
 
-<a href="progress.html">
-<button>📊 Progress</button>
-</a>
+    <br><br>
 
-<a href="leaderboard.html">
-    <button>🏆 Leaderboard</button>
-</a>
+    <button>📄 Previous Year Papers</button>
+
+    <br><br>
+
+    <a href="profile.html">
+        <button>👤 Profile</button>
+    </a>
+
+    <br><br>
+
+    <a href="certificate.html">
+        <button>🏆 Certificate</button>
+    </a>
+
+    <br><br>
+
+    <a href="progress.html">
+        <button>📊 Progress</button>
+    </a>
+
+    <br><br>
+
+    <a href="leaderboard.html">
+        <button>🥇 Leaderboard</button>
+    </a>
+
+    <br><br>
+
+    <a href="settings.html">
+        <button>⚙️ Settings</button>
+    </a>
+
+    <br><br>
+
+    <button onclick="logout()">🚪 Logout</button>
+
 </section>
-<br>
-<button onclick="logout()">Logout</button>
+
 <footer>
-
-<p>© 2026 EduNova AI</p>
-
+    <p>© 2026 EduNova AI</p>
 </footer>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 
 <script>
 window.onload = function () {
+
     let name = localStorage.getItem("studentName");
 
     if (!name) {
@@ -106,8 +104,11 @@ window.onload = function () {
         return;
     }
 
-    document.getElementById("welcome").innerHTML = "Welcome " + name + " 👋";
+    document.getElementById("welcome").innerHTML =
+        "Welcome, " + name + " 👋";
+
 }
 </script>
+
 </body>
 </html>
