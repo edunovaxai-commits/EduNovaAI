@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel - EduNova AI</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h1>🛠 Admin Panel</h1>
+<p>EduNova AI Administration</p>
+</header>
+
+<section>
+
+<div class="card">
+
+<h2>📊 Dashboard</h2>
+
+<p><b>Total Users:</b> <span id="totalUsers">1</span></p>
+
+<p><b>Quiz Score:</b> <span id="quizScore">0</span></p>
+
+<p><b>Certificates:</b> <span id="certificateStatus">No</span></p>
+
+<p><b>Feedback Received:</b> <span id="feedbackCount">0</span></p>
+
+<p><b>Current Version:</b> EduNova AI Ultimate v10</p>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<h2>👤 Student Details</h2>
+
+<p><b>Name:</b> <span id="studentName"></span></p>
+
+<p><b>Email:</b> <span id="studentEmail"></span></p>
+
+<p><b>Mobile:</b> <span id="studentMobile"></span></p>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<h2>📝 Admin Actions</h2>
+
+<button onclick="viewFeedback()">
+📩 View Feedback
+</button>
+
+<br><br>
+
+<button onclick="clearFeedback()">
+🗑 Clear Feedback
+</button>
+
+<br><br>
+
+<button onclick="resetStudent()">
+♻ Reset Student Data
+</button>
+
+<br><br>
+
+<button onclick="clearAllData()">
+❌ Delete All Data
+</button>
+
+<br><br>
+
+<a href="dashboard.html">
+<button>🏠 Dashboard</button>
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 EduNova AI</p>
+
+</footer>
+
+<script>
+
+document.getElementById("studentName").innerHTML=
+localStorage.getItem("studentName") || "-";
+
+document.getElementById("studentEmail").innerHTML=
+localStorage.getItem("studentEmail") || "-";
+
+document.getElementById("studentMobile").innerHTML=
+localStorage.getItem("studentMobile") || "-";
+
+document.getElementById("quizScore").innerHTML=
+localStorage.getItem("quizScore") || "0";
+
+document.getElementById("certificateStatus").innerHTML=
+localStorage.getItem("certificate") || "No";
+
+let feedbacks=
+JSON.parse(localStorage.getItem("feedbacks")) || [];
+
+document.getElementById("feedbackCount").innerHTML=
+feedbacks.length;
+
+function viewFeedback(){
+
+if(feedbacks.length==0){
+
+alert("No Feedback Available");
+
+return;
+
+}
+
+let data="";
+
+feedbacks.forEach(function(item,index){
+
+data +=
+(index+1)+". "+
+item.name+
+"\n"+
+item.rating+
+"\n"+
+item.message+
+"\n\n";
+
+});
+
+alert(data);
+
+}
+
+function clearFeedback(){
+
+localStorage.removeItem("feedbacks");
+
+location.reload();
+
+}
+
+function resetStudent(){
+
+localStorage.removeItem("quizScore");
+
+localStorage.removeItem("certificate");
+
+alert("Student Progress Reset");
+
+location.reload();
+
+}
+
+function clearAllData(){
+
+if(confirm("Delete all local data?")){
+
+localStorage.clear();
+
+alert("All Data Deleted");
+
+window.location.href="index.html";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
