@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Previous Year Papers - EduNova AI</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h1>📄 Previous Year Papers</h1>
+<p>Download Question Papers</p>
+</header>
+
+<section>
+
+<div class="card">
+
+<h2>Select Subject</h2>
+
+<table>
+
+<tr>
+<th>Subject</th>
+<th>Year</th>
+<th>Download</th>
+</tr>
+
+<tr>
+<td>HTML</td>
+<td>2025</td>
+<td><button onclick="downloadPaper('HTML')">⬇ Download</button></td>
+</tr>
+
+<tr>
+<td>CSS</td>
+<td>2025</td>
+<td><button onclick="downloadPaper('CSS')">⬇ Download</button></td>
+</tr>
+
+<tr>
+<td>JavaScript</td>
+<td>2025</td>
+<td><button onclick="downloadPaper('JavaScript')">⬇ Download</button></td>
+</tr>
+
+<tr>
+<td>Python</td>
+<td>2025</td>
+<td><button onclick="downloadPaper('Python')">⬇ Download</button></td>
+</tr>
+
+<tr>
+<td>DBMS</td>
+<td>2025</td>
+<td><button onclick="downloadPaper('DBMS')">⬇ Download</button></td>
+</tr>
+
+<tr>
+<td>Data Science</td>
+<td>2025</td>
+<td><button onclick="downloadPaper('Data Science')">⬇ Download</button></td>
+</tr>
+
+</table>
+
+<br>
+
+<h3>📤 Upload Your Question Paper</h3>
+
+<input type="file" id="paperFile" accept=".pdf,.doc,.docx">
+
+<br><br>
+
+<button onclick="uploadPaper()">
+📤 Upload Paper
+</button>
+
+<br><br>
+
+<a href="dashboard.html">
+<button>🏠 Back to Dashboard</button>
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 EduNova AI</p>
+
+</footer>
+
+<script>
+
+function downloadPaper(subject){
+
+alert(subject + " Question Paper Download will be available after adding the PDF.");
+
+}
+
+function uploadPaper(){
+
+let file=document.getElementById("paperFile").files[0];
+
+if(!file){
+
+alert("Please select a file.");
+
+return;
+
+}
+
+alert("Paper Uploaded Successfully!");
+
+}
+
+</script>
+
+</body>
+</html>
