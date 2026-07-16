@@ -1,610 +1,663 @@
-function showMessage() {
-    window.location.href = "login.html";
+// ==============================
+// EduNova AI - script.js
+// Part 1
+// Login, Signup, Profile & Theme
+// ==============================
+
+// ---------- SIGNUP ----------
+
+function signup(){
+
+let name=document.getElementById("name").value.trim();
+let email=document.getElementById("email").value.trim();
+let mobile=document.getElementById("mobile").value.trim();
+let password=document.getElementById("password").value;
+
+if(name=="" || email=="" || mobile=="" || password==""){
+
+alert("Please fill all fields.");
+return;
+
 }
-let score = 0;
 
-function checkAnswer() {
+localStorage.setItem("studentName",name);
+localStorage.setItem("studentEmail",email);
+localStorage.setItem("studentMobile",mobile);
+localStorage.setItem("studentPassword",password);
 
-    let ans = document.getElementById("correct");
+alert("Account Created Successfully!");
 
-    if (ans.checked) {
-        score = score + 1;
-        document.getElementById("result").innerHTML = "✅ Correct Answer";
-    } else {
-        document.getElementById("result").innerHTML = "❌ Wrong Answer";
-    }
+window.location.href="login.html";
 
-    document.getElementById("score").innerHTML = "Score : " + score;
 }
 
-function login() {
 
-let email = document.getElementById("email").value;
 
-let password = document.getElementById("password").value;
+// ---------- LOGIN ----------
 
-if(email=="" || password==""){
+function login(){
 
-document.getElementById("error").innerHTML = "Please enter Email and Password";
-}else{
+let email=document.getElementById("email").value.trim();
+let password=document.getElementById("password").value;
 
-let savedEmail = localStorage.getItem("studentEmail");
-let savedPassword = localStorage.getItem("studentPassword");
+let savedEmail=localStorage.getItem("studentEmail");
+let savedPassword=localStorage.getItem("studentPassword");
 
-if(email == savedEmail && password == savedPassword){
+if(email==savedEmail && password==savedPassword){
 
-let username = email.split("@")[0];
-localStorage.setItem("studentName", username);
+alert("Login Successful");
 
-document.getElementById("email").value = "";
-document.getElementById("password").value = "";
 window.location.href="dashboard.html";
 
 }else{
 
-document.getElementById("error").innerHTML = "Invalid Email or Password";
+alert("Invalid Email or Password");
 
 }
 
 }
 
-}
 
-function showPassword() {
 
-let password = document.getElementById("password");
+// ---------- LOGOUT ----------
 
-if(password.type=="password"){
-    password.type="text";
-}else{
-    password.type="password";
-}
+function logout(){
 
-}
-function logout() {
+if(confirm("Do you want to logout?")){
 
-localStorage.removeItem("studentName");
-
-window.location.href = "index.html";
-
-}
-function signup() {
-
-let name = document.getElementById("name").value;
-let email = document.getElementById("email").value;
-let password = document.getElementById("password").value;
-let mobile = document.getElementById("mobile").value;
-
-localStorage.setItem("studentName", name);
-localStorage.setItem("studentEmail", email);
-localStorage.setItem("studentPassword", password);
-localStorage.setItem("studentMobile", mobile);
-
-alert("Account Created Successfully!");
-
-window.location.href = "login.html";
+window.location.href="login.html";
 
 }
 
 }
 
-function askAI() {
 
-let question = document.getElementById("question").value.toLowerCase();
 
-let answer = "";
-}else if(question.includes("html")){
+// ---------- EDIT PROFILE ----------
 
-answer = "HTML (HyperText Markup Language) is the standard markup language used to create the structure of web pages. It defines elements such as headings, paragraphs, images, links, tables, forms, and more.";
+function saveProfile(){
 
-}
+let name=document.getElementById("name").value.trim();
+let email=document.getElementById("email").value.trim();
+let mobile=document.getElementById("mobile").value.trim();
 
- }else if(question.includes("css")){
+if(name=="" || email=="" || mobile==""){
 
-answer = "CSS (Cascading Style Sheets) is used to style HTML pages. It controls colors, fonts, spacing, layouts, animations, and responsive design to make websites attractive.";
+alert("Please fill all fields.");
 
-}
-
-}else if(question.includes("c")){
-
-answer = "C is a fast and powerful programming language used for system programming, operating systems, and embedded systems.";
-}else if(question.includes("data science")){
-
-answer = "Data Science is the process of collecting, analyzing, and interpreting data to make better decisions using statistics, machine learning, and AI.";
-}else if(question.includes("dbms")){
-
-answer = "DBMS (Database Management System) is software used to store, organize, retrieve, and manage data efficiently. Examples include MySQL, Oracle, and PostgreSQL.";
-
-}
-}else if(question.includes("javascript") || question.includes("js")){
-
-answer = "JavaScript is a programming language used to make websites interactive. It can handle user events, manipulate HTML and CSS, validate forms, create animations, and communicate with servers using APIs.";
-
-}
-}else if(
-    question.includes("hi") ||
-    question.includes("hello") ||
-    question.includes("hey")
-){
-
-answer = "Hello! 👋 Welcome to EduNova AI. Ask me any question about programming, computer science, or technology.";
+return;
 
 }
 
-}else if(
-    question.includes("thank you") ||
-    question.includes("thanks")
-){
+localStorage.setItem("studentName",name);
+localStorage.setItem("studentEmail",email);
+localStorage.setItem("studentMobile",mobile);
 
-answer = "You're welcome! 😊 I'm happy to help. Feel free to ask another question.";
+alert("Profile Updated Successfully!");
 
-}
-}else if(
-    question.includes("bye") ||
-    question.includes("goodbye") ||
-    question.includes("see you")
-){
-
-answer = "Goodbye! 👋 Have a great day and keep learning with EduNova AI.";
-
-}
-}else if(
-    question.includes("date") ||
-    question.includes("time")
-){
-
-let now = new Date();
-
-answer = "Current Date & Time: " + now.toLocaleString();
-
-}
-}else if(question.includes("+")){
-
-try{
-
-let result = eval(question);
-
-answer = "Answer: " + result;
-
-}catch{
-
-answer = "Please enter a valid math expression.";
-
-}
-}else if(question.includes("-")){
-
-try{
-
-let result = eval(question);
-
-answer = "Answer: " + result;
-
-}catch{
-
-answer = "Please enter a valid math expression.";
-
-}
-    }else if(question.includes("*")){
-
-try{
-
-let result = eval(question);
-
-answer = "Answer: " + result;
-
-}catch{
-
-answer = "Please enter a valid math expression.";
+window.location.href="profile.html";
 
 }
 
-}else if(question.includes("operating system") || question.includes("os")){
 
-answer = "An Operating System (OS) is system software that manages computer hardware, memory, files, and programs. Examples include Windows, Linux, and macOS.";
 
-}    
-}else if(question.includes("computer network") || question.includes("network")){
+// ---------- LOAD PROFILE ----------
 
-answer = "A Computer Network is a group of connected computers that communicate and share resources using protocols such as TCP/IP. Examples include LAN, WAN, and the Internet.";
+function loadProfile(){
 
-}
+if(document.getElementById("name")){
 
-}else if(question.includes("oop") || question.includes("object oriented programming")){
-
-answer = "Object-Oriented Programming (OOP) is a programming paradigm based on objects and classes. Its four main principles are Encapsulation, Inheritance, Polymorphism, and Abstraction.";
-
-}
-}else if(question.includes("ai") || question.includes("artificial intelligence")){
-
-answer = "Artificial Intelligence (AI) enables computers to perform tasks that normally require human intelligence, such as learning, reasoning, problem-solving, and decision-making.";
+document.getElementById("name").innerHTML=
+localStorage.getItem("studentName") || "Student";
 
 }
 
-}else if(question.includes("machine learning") || question.includes("ml")){
+if(document.getElementById("email")){
 
-answer = "Machine Learning (ML) is a branch of Artificial Intelligence that enables computers to learn from data and make predictions without being explicitly programmed.";
-
-}
-}else if(question.includes("cyber security") || question.includes("cybersecurity")){
-
-answer = "Cyber Security is the practice of protecting computers, networks, and data from cyber attacks, malware, hacking, and unauthorized access.";
+document.getElementById("email").innerHTML=
+localStorage.getItem("studentEmail") || "-";
 
 }
-}else if(question.includes("cloud computing") || question.includes("cloud")){
 
-answer = "Cloud Computing is the delivery of computing services such as storage, servers, databases, networking, and software over the Internet. Popular cloud platforms include AWS, Microsoft Azure, and Google Cloud.";
+if(document.getElementById("mobile")){
 
-}
-}else if(question.includes("sql")){
-
-answer = "SQL (Structured Query Language) is used to create, retrieve, update, and manage data stored in relational databases. Common SQL commands include SELECT, INSERT, UPDATE, and DELETE.";
+document.getElementById("mobile").innerHTML=
+localStorage.getItem("studentMobile") || "-";
 
 }
-}else if(question.includes("python")){
-
-answer = "Python is a simple, powerful, and beginner-friendly programming language. It is widely used in web development, data science, artificial intelligence, machine learning, automation, and software development.";
 
 }
-}else if(question.includes("c++") || question.includes("cpp")){
 
-answer = "C++ is an object-oriented programming language used for game development, system software, competitive programming, and high-performance applications.";
 
-}
-}else if(question.includes("git")){
 
-answer = "Git is a version control system used to track changes in source code, collaborate with developers, and manage software projects efficiently.";
+// ---------- PROFILE PHOTO ----------
 
-}
-}else if(question.includes("github")){
+function uploadPhoto(input){
 
-answer = "GitHub is a cloud-based platform that hosts Git repositories. It helps developers store code, collaborate on projects, track changes, and manage software development.";
+let file=input.files[0];
 
-}
-}else if(question.includes("linux")){
+if(!file) return;
 
-answer = "Linux is an open-source operating system known for its security, stability, and performance. It is widely used in servers, cloud computing, and software development.";
+let reader=new FileReader();
 
-}
-}else if(question.includes("react")){
+reader.onload=function(e){
 
-answer = "React is a JavaScript library used to build fast, interactive, and reusable user interfaces. It is widely used for developing modern web applications.";
+localStorage.setItem("profilePhoto",e.target.result);
 
-}
-}else if(question.includes("node") || question.includes("node.js")){
+let img=document.getElementById("preview");
 
-answer = "Node.js is a JavaScript runtime environment that allows developers to run JavaScript on the server side. It is widely used to build fast and scalable web applications.";
+if(img){
+
+img.src=e.target.result;
 
 }
-}else if(question.includes("mongodb") || question.includes("mongo")){
-
-answer = "MongoDB is a NoSQL database that stores data in flexible JSON-like documents. It is widely used in modern web applications because it is scalable and easy to use.";
 
 }
-}else if(question.includes("api")){
 
-answer = "API (Application Programming Interface) allows different software applications to communicate and exchange data with each other. APIs are widely used in web, mobile, and cloud applications.";
-
-}
-}else if(question.includes("json")){
-
-answer = "JSON (JavaScript Object Notation) is a lightweight data format used to store and exchange data between applications. It is easy for humans to read and machines to parse.";
+reader.readAsDataURL(file);
 
 }
-}else if(question.includes("http")){
 
-answer = "HTTP (HyperText Transfer Protocol) is a communication protocol used to transfer web pages and data between a web browser and a web server.";
+function loadPhoto(){
+
+let img=document.getElementById("preview");
+
+let photo=localStorage.getItem("profilePhoto");
+
+if(img && photo){
+
+img.src=photo;
 
 }
-}else if(question.includes("https")){
-
-answer = "HTTPS (HyperText Transfer Protocol Secure) is the secure version of HTTP. It encrypts data using SSL/TLS, making communication between the browser and server safe.";
 
 }
-}else if(question.includes("/")){
 
-    try{
-        let result = eval(question);
-        answer = "Answer: " + result;
-    }catch{
-        answer = "Please enter a valid math expression.";
-    }
 
-}else if(question.includes("%")){
 
-    try{
-        let result = eval(question);
-        answer = "Answer: " + result;
-    }catch{
-        answer = "Please enter a valid math expression.";
-    }
+// ---------- DARK MODE ----------
 
-}else if(question.includes("python")){
+function toggleTheme(){
 
-    answer = "Python is a simple and powerful programming language used in AI, Data Science, Web Development, Automation and Machine Learning.";
+document.body.classList.toggle("dark-mode");
 
-}else if(question.includes("java")){
+if(document.body.classList.contains("dark-mode")){
 
-    answer = "Java is an object-oriented programming language used for Android apps, desktop software and enterprise applications.";
-
-}else if(question.includes("c++") || question.includes("cpp")){
-
-    answer = "C++ is an object-oriented programming language used in game development, competitive programming and system software.";
-
-}else if(question.includes("html")){
-
-    answer = "HTML is the standard markup language used to create the structure of web pages.";
-
-}else if(question.includes("css")){
-
-    answer = "CSS is used to style HTML pages by controlling colors, fonts, layouts and animations.";
-
-}else if(question.includes("javascript") || question.includes("js")){
-
-    answer = "JavaScript makes websites interactive using events, DOM manipulation and APIs.";
-
-}else if(question.includes("react")){
-
-    answer = "React is a JavaScript library used to build modern user interfaces.";
-
-}else if(question.includes("node")){
-
-    answer = "Node.js allows JavaScript to run on the server side.";
-
-}else if(question.includes("mongodb")){
-
-    answer = "MongoDB is a NoSQL database that stores data in JSON-like documents.";
-
-}else if(question.includes("dbms")){
-
-    answer = "DBMS is software used to store, retrieve and manage databases.";
-
-}else if(question.includes("sql")){
-
-    answer = "SQL is used to manage relational databases using commands like SELECT, INSERT, UPDATE and DELETE.";
-
-}else if(question.includes("ai")){
-
-    answer = "Artificial Intelligence enables machines to perform tasks that normally require human intelligence.";
-
-}else if(question.includes("machine learning")){
-
-    answer = "Machine Learning is a branch of AI where computers learn from data.";
-
-}else if(question.includes("data science")){
-
-    answer = "Data Science combines statistics, programming and AI to analyze data.";
-
-}else if(question.includes("cloud")){
-
-    answer = "Cloud Computing delivers servers, storage and software over the Internet.";
-
-}else if(question.includes("network")){
-
-    answer = "Computer Networks connect multiple computers for communication and resource sharing.";
-
-}else if(question.includes("operating system") || question.includes("os")){
-
-    answer = "An Operating System manages hardware, software and system resources.";
-
-}else if(question.includes("linux")){
-
-    answer = "Linux is an open-source operating system widely used in servers.";
-
-}else if(question.includes("github")){
-
-    answer = "GitHub is a cloud platform for hosting Git repositories.";
-
-}else if(question.includes("git")){
-
-    answer = "Git is a version control system used to track source code changes.";
-
-}else if(question.includes("hello") || question.includes("hi")){
-
-    answer = "Hello 👋 Welcome to EduNova AI!";
-
-}else if(question.includes("thanks") || question.includes("thank you")){
-
-    answer = "You're Welcome 😊 Happy Learning!";
-
-}else if(question.includes("bye")){
-
-    answer = "Goodbye 👋 Have a Nice Day!";
-
-
-}else if(question.includes("array")){
-
-    answer = "An Array is a collection of elements stored in contiguous memory locations.";
-
-}else if(question.includes("string")){
-
-    answer = "A String is a sequence of characters used to store text.";
-
-}else if(question.includes("loop")){
-
-    answer = "Loops execute a block of code repeatedly. Common loops are for, while and do-while.";
-
-}else if(question.includes("function")){
-
-    answer = "A Function is a reusable block of code that performs a specific task.";
-
-}else if(question.includes("variable")){
-
-    answer = "A Variable stores data values in a program.";
-
-}else if(question.includes("compiler")){
-
-    answer = "A Compiler converts source code into machine code before execution.";
-
-}else if(question.includes("interpreter")){
-
-    answer = "An Interpreter executes source code line by line.";
-
-}else if(question.includes("algorithm")){
-
-    answer = "An Algorithm is a step-by-step procedure used to solve a problem.";
-
-}else if(question.includes("flowchart")){
-
-    answer = "A Flowchart is a graphical representation of an algorithm.";
-
-}else if(question.includes("binary tree")){
-
-    answer = "A Binary Tree is a hierarchical data structure where each node has at most two children.";
-
-}else if(question.includes("stack")){
-
-    answer = "A Stack follows the LIFO (Last In First Out) principle.";
-
-}else if(question.includes("queue")){
-
-    answer = "A Queue follows the FIFO (First In First Out) principle.";
-
-}else if(question.includes("linked list")){
-
-    answer = "A Linked List is a linear data structure where nodes are connected using pointers.";
-
-}else if(question.includes("api")){
-
-    answer = "An API allows different software applications to communicate with each other.";
-
-}else if(question.includes("json")){
-
-    answer = "JSON is a lightweight format used for storing and exchanging data.";
-
-}else if(question.includes("http")){
-
-    answer = "HTTP is the protocol used to transfer web pages over the Internet.";
-
-}else if(question.includes("https")){
-
-    answer = "HTTPS is the secure version of HTTP using SSL/TLS encryption.";
-
-}else if(question.includes("oop")){
-
-    answer = "OOP is based on four principles: Encapsulation, Inheritance, Polymorphism and Abstraction.";
-
-}else if(question.includes("computer")){
-
-    answer = "A computer is an electronic device that accepts input, processes data, stores information and produces output.";
-
-}else if(question.includes("internet")){
-
-    answer = "The Internet is a global network connecting millions of computers worldwide.";
-
-}else if(question.includes("wifi")){
-
-    answer = "Wi-Fi is a wireless technology used to connect devices to the Internet.";
-
-}else if(question.includes("cpu")){
-
-    answer = "CPU is the brain of the computer that performs calculations and executes instructions.";
-
-}else if(question.includes("ram")){
-
-    answer = "RAM is temporary memory used while programs are running.";
-
-}else if(question.includes("rom")){
-
-    answer = "ROM is permanent memory that stores firmware.";
-
-}else if(question.includes("keyboard")){
-
-    answer = "A Keyboard is an input device used to enter text and commands.";
-
-}else if(question.includes("mouse")){
-
-    answer = "A Mouse is a pointing device used to control the cursor.";
-    
-
+localStorage.setItem("theme","dark");
 
 }else{
 
-answer = "Sorry! I don't know the answer yet.";
-
-}
-saveChat(question, answer);
-document.getElementById("answer").innerHTML = answer;
+localStorage.setItem("theme","light");
 
 }
 
+}
 
+function loadTheme(){
 
-function clearChat(){
+if(localStorage.getItem("theme")=="dark"){
 
-document.getElementById("question").value = "";
+document.body.classList.add("dark-mode");
 
-document.getElementById("answer").innerHTML =
-"Waiting for your question...";
+}
 
 }
 
 
-function saveChat(question, answer){
 
-    let chats = JSON.parse(localStorage.getItem("chatHistory")) || [];
+// ---------- WINDOW LOAD ----------
 
-    chats.push({
-        question: question,
-        answer: answer,
-        time: new Date().toLocaleString()
-    });
+window.onload=function(){
 
-    localStorage.setItem("chatHistory", JSON.stringify(chats));
+loadTheme();
+
+loadProfile();
+
+loadPhoto();
+
+};
+
+
+
+// ==============================
+// EduNova AI - script.js
+// Part 2
+// AI Chat, Notes, Search, Quiz
+// ==============================
+
+
+// ---------- AI CHAT ----------
+
+function askAI(){
+
+let question=document.getElementById("question").value.toLowerCase().trim();
+
+let answer="";
+
+if(question==""){
+
+answer="Please enter your question.";
+
 }
 
-function clearChat(){
+else if(question.includes("html")){
 
-    document.getElementById("question").value = "";
+answer="HTML (HyperText Markup Language) is used to create the structure of web pages.";
 
-    document.getElementById("answer").innerHTML =
-    "Waiting for your question...";
 }
+
+else if(question.includes("css")){
+
+answer="CSS (Cascading Style Sheets) is used to design and style web pages.";
+
+}
+
+else if(question.includes("javascript") || question.includes("js")){
+
+answer="JavaScript makes websites interactive using DOM, Events and APIs.";
+
+}
+
+else if(question.includes("python")){
+
+answer="Python is a powerful programming language used in AI, Data Science, Automation and Web Development.";
+
+}
+
+else if(question.includes("java")){
+
+answer="Java is an object-oriented programming language used for Android and Enterprise applications.";
+
+}
+
+else if(question.includes("dbms")){
+
+answer="DBMS is software used to store, organize and manage databases.";
+
+}
+
+else if(question.includes("computer")){
+
+answer="A computer is an electronic device that accepts input, processes data and produces output.";
+
+}
+
+else if(question.includes("ai")){
+
+answer="Artificial Intelligence enables machines to learn and make decisions like humans.";
+
+}
+
+else if(question.includes("+") || question.includes("-") || question.includes("*") || question.includes("/")){
+
+try{
+
+answer="Answer : "+eval(question);
+
+}catch{
+
+answer="Invalid Math Expression.";
+
+}
+
+}
+
+else{
+
+answer="Sorry! I don't know this answer yet. Gemini AI integration will answer this in the next version.";
+
+}
+
+document.getElementById("answer").innerHTML=answer;
+
+saveChat(question,answer);
+
+}
+
+
+
+// ---------- CHAT HISTORY ----------
+
+function saveChat(question,answer){
+
+let chats=JSON.parse(localStorage.getItem("chatHistory")) || [];
+
+chats.push({
+
+question:question,
+
+answer:answer,
+
+time:new Date().toLocaleString()
+
+});
+
+localStorage.setItem("chatHistory",JSON.stringify(chats));
+
+}
+
+
 
 function showHistory(){
 
-    let chats = JSON.parse(localStorage.getItem("chatHistory")) || [];
+let chats=JSON.parse(localStorage.getItem("chatHistory")) || [];
 
-    let output = "";
+let output="";
 
-    if(chats.length==0){
+if(chats.length==0){
 
-        output = "No chat history found.";
+output="No Chat History Found.";
 
-    }else{
+}
 
-        for(let i=0;i<chats.length;i++){
+else{
 
-            output +=
-            "<hr>" +
-            "<b>Q:</b> " + chats[i].question + "<br>" +
-            "<b>A:</b> " + chats[i].answer + "<br>" +
-            "<small>" + chats[i].time + "</small><br>";
+for(let i=0;i<chats.length;i++){
 
-        }
+output+=
 
-    }
+"<hr><b>Q:</b> "+chats[i].question+
 
-    document.getElementById("answer").innerHTML = output;
+"<br><b>A:</b> "+chats[i].answer+
+
+"<br><small>"+chats[i].time+"</small>";
+
+}
+
+}
+
+document.getElementById("answer").innerHTML=output;
+
 }
 
 
 
+function clearChat(){
 
-// Voice Input
+document.getElementById("question").value="";
+
+document.getElementById("answer").innerHTML="Waiting for your question...";
+
+}
+
+
+
+// ---------- NOTES ----------
+
+function showNotes(subject){
+
+let notes="";
+
+switch(subject){
+
+case "html":
+
+notes="<h2>HTML</h2><p>HTML creates the structure of web pages.</p>";
+
+break;
+
+case "css":
+
+notes="<h2>CSS</h2><p>CSS is used for styling websites.</p>";
+
+break;
+
+case "javascript":
+
+notes="<h2>JavaScript</h2><p>JavaScript makes websites interactive.</p>";
+
+break;
+
+case "python":
+
+notes="<h2>Python</h2><p>Python is used in AI, ML and Data Science.</p>";
+
+break;
+
+case "dbms":
+
+notes="<h2>DBMS</h2><p>DBMS manages databases efficiently.</p>";
+
+break;
+
+default:
+
+notes="<h2>Notes</h2><p>Notes not available.</p>";
+
+}
+
+document.getElementById("notes").innerHTML=notes;
+
+}
+
+
+
+// ---------- SEARCH NOTES ----------
+
+function searchNotes(){
+
+let input=document.getElementById("searchBox").value.toLowerCase();
+
+let notes=document.getElementById("notes");
+
+if(input==""){
+
+notes.style.display="block";
+
+return;
+
+}
+
+if(notes.innerText.toLowerCase().includes(input)){
+
+notes.style.display="block";
+
+}else{
+
+notes.style.display="none";
+
+}
+
+}
+
+
+
+// ---------- QUIZ ----------
+
+function checkQuiz(){
+
+let score=0;
+
+if(document.querySelector('input[name="q1"]:checked')?.value=="a") score++;
+
+if(document.querySelector('input[name="q2"]:checked')?.value=="b") score++;
+
+if(document.querySelector('input[name="q3"]:checked')?.value=="c") score++;
+
+localStorage.setItem("quizScore",score);
+
+let msg="";
+
+if(score==3){
+
+msg="🏆 Excellent!";
+
+}
+
+else if(score==2){
+
+msg="👍 Good Job!";
+
+}
+
+else if(score==1){
+
+msg="🙂 Keep Practicing.";
+
+}
+
+else{
+
+msg="📚 Study More.";
+
+}
+
+document.getElementById("score").innerHTML=
+
+"Your Score : "+score+"/3<br>"+msg;
+
+}
+
+
+
+// ==============================
+// EduNova AI - script.js
+// Part 3
+// Certificate, Progress,
+// Leaderboard & Utilities
+// ==============================
+
+// ---------- CERTIFICATE ----------
+
+function loadCertificate(){
+
+let name=localStorage.getItem("studentName") || "Student";
+
+let score=localStorage.getItem("quizScore") || "0";
+
+if(document.getElementById("studentName")){
+
+document.getElementById("studentName").innerHTML=name;
+
+}
+
+if(document.getElementById("studentScore")){
+
+document.getElementById("studentScore").innerHTML="Score : "+score+"/3";
+
+}
+
+}
+
+function printCertificate(){
+
+window.print();
+
+}
+
+
+
+// ---------- PROGRESS ----------
+
+function loadProgress(){
+
+let name=localStorage.getItem("studentName") || "Student";
+
+let score=localStorage.getItem("quizScore") || "0";
+
+if(document.getElementById("progressName")){
+
+document.getElementById("progressName").innerHTML=name;
+
+}
+
+if(document.getElementById("progressScore")){
+
+document.getElementById("progressScore").innerHTML=score+"/3";
+
+}
+
+let percent=(score/3)*100;
+
+if(document.getElementById("progressBar")){
+
+document.getElementById("progressBar").style.width=percent+"%";
+
+document.getElementById("progressBar").innerHTML=Math.round(percent)+"%";
+
+}
+
+}
+
+
+
+// ---------- LEADERBOARD ----------
+
+function loadLeaderboard(){
+
+let name=localStorage.getItem("studentName") || "Student";
+
+let score=localStorage.getItem("quizScore") || "0";
+
+if(document.getElementById("leaderName")){
+
+document.getElementById("leaderName").innerHTML=name;
+
+}
+
+if(document.getElementById("leaderScore")){
+
+document.getElementById("leaderScore").innerHTML=score+"/3";
+
+}
+
+}
+
+
+
+// ---------- COPY ANSWER ----------
+
+function copyAnswer(){
+
+let text=document.getElementById("answer").innerText;
+
+navigator.clipboard.writeText(text);
+
+alert("Answer Copied Successfully.");
+
+}
+
+
+
+// ---------- DOWNLOAD CHAT ----------
+
+function downloadHistory(){
+
+let chats=localStorage.getItem("chatHistory") || "No History";
+
+let blob=new Blob([chats],{type:"text/plain"});
+
+let a=document.createElement("a");
+
+a.href=URL.createObjectURL(blob);
+
+a.download="EduNovaAI_ChatHistory.txt";
+
+a.click();
+
+}
+
+
+
+// ---------- VOICE INPUT ----------
+
 function startVoice(){
 
 if(!('webkitSpeechRecognition' in window)){
-    alert("Voice Recognition is not supported in this browser.");
-    return;
+
+alert("Voice Recognition Not Supported");
+
+return;
+
 }
 
-let recognition = new webkitSpeechRecognition();
+let recognition=new webkitSpeechRecognition();
 
-recognition.lang = "en-IN";
+recognition.lang="en-IN";
 
-recognition.onresult = function(event){
+recognition.onresult=function(event){
 
-document.getElementById("question").value =
+document.getElementById("question").value=
+
 event.results[0][0].transcript;
 
 };
@@ -613,329 +666,42 @@ recognition.start();
 
 }
 
-// Copy Answer
-function copyAnswer(){
 
-let text = document.getElementById("answer").innerText;
 
-navigator.clipboard.writeText(text);
+// ---------- SETTINGS ----------
 
-alert("Answer copied successfully!");
+function saveSettings(){
 
-}
+let theme=document.getElementById("themeSelect").value;
 
-// Download Chat History
-function downloadHistory(){
+localStorage.setItem("theme",theme);
 
-let chats = localStorage.getItem("chatHistory") || "No History";
+alert("Settings Saved");
 
-let blob = new Blob([chats], {type:"text/plain"});
-
-let link = document.createElement("a");
-
-link.href = URL.createObjectURL(blob);
-
-link.download = "EduNovaAI_ChatHistory.txt";
-
-link.click();
-
-}
-function showNotes(subject){
-
-let notes = "";
-
-switch(subject){
-
-case "html":
-notes = "<h2>HTML</h2><p>HTML is used to create the structure of web pages.</p>";
-break;
-
-case "css":
-notes = "<h2>CSS</h2><p>CSS is used to style web pages.</p>";
-break;
-
-case "javascript":
-notes = "<h2>JavaScript</h2><p>JavaScript makes websites interactive.</p>";
-break;
-
-case "python":
-notes = "<h2>Python</h2><p>Python is used for AI, Data Science and Web Development.</p>";
-break;
-
-default:
-notes = "Notes not available.";
+location.reload();
 
 }
 
-document.getElementById("notes").innerHTML = notes;
 
-}
-function showNotes(subject){
 
-let notes="";
+// ---------- PREVIOUS YEAR PAPERS ----------
 
-switch(subject){
+function openPaper(subject){
 
-case "bca":
-notes="<h2>BCA</h2><p>BCA (Bachelor of Computer Applications) is a 3-year undergraduate course focused on programming, databases, networking and software development.</p>";
-break;
-
-case "cs":
-notes="<h2>Computer Science</h2><p>Computer Science covers programming, algorithms, operating systems, DBMS, networking and AI.</p>";
-break;
-
-case "ds":
-notes="<h2>Data Science</h2><p>Data Science involves collecting, analyzing and interpreting data using statistics, machine learning and AI.</p>";
-break;
-
-case "python":
-notes="<h2>Python</h2><p>Python is widely used in AI, Data Science, Automation and Web Development.</p>";
-break;
-
-case "dbms":
-notes="<h2>DBMS</h2><p>DBMS is software used to store, organize and manage data efficiently.</p>";
-break;
-
-default:
-notes="Notes not available.";
+alert(subject+" Papers will be available soon.");
 
 }
 
-document.getElementById("notes").innerHTML=notes;
 
-}
 
-function showNotes(subject){
+// ---------- ABOUT ----------
 
-let notes="";
+function aboutApp(){
 
-switch(subject){
+alert(
 
-case "bca":
-notes=`
-<h2>🎓 BCA</h2>
-<p>BCA (Bachelor of Computer Applications) is a 3-year undergraduate course focused on programming, databases, networking, software engineering, web development and artificial intelligence.</p>
-`;
-break;
+"EduNova AI\n\nVersion : 5.0\nDeveloped for Smart Learning."
 
-case "cs":
-notes=`
-<h2>💻 Computer Science</h2>
-<p>Computer Science is the study of computers, programming, algorithms, operating systems, databases, networking, cybersecurity and artificial intelligence.</p>
-`;
-break;
-
-case "ds":
-notes=`
-<h2>📊 Data Science</h2>
-<p>Data Science is the process of collecting, cleaning, analyzing and visualizing data to make better decisions using statistics, machine learning and AI.</p>
-`;
-break;
-
-case "python":
-notes=`
-<h2>🐍 Python</h2>
-<p>Python is an easy-to-learn programming language used in AI, Machine Learning, Data Science, Web Development, Automation and Software Development.</p>
-`;
-break;
-
-case "dbms":
-notes=`
-<h2>🗄️ DBMS</h2>
-<p>DBMS (Database Management System) is software used to store, organize, retrieve and manage data efficiently.</p>
-
-<b>Examples:</b>
-<ul>
-<li>MySQL</li>
-<li>Oracle</li>
-<li>SQL Server</li>
-<li>PostgreSQL</li>
-</ul>
-`;
-break;
-
-case "os":
-notes=`
-<h2>🖥️ Operating System</h2>
-<p>An Operating System manages hardware, software, memory, files and processes.</p>
-
-<b>Examples:</b>
-<ul>
-<li>Windows</li>
-<li>Linux</li>
-<li>macOS</li>
-<li>Android</li>
-</ul>
-`;
-break;
-
-case "cn":
-notes=`
-<h2>🌐 Computer Network</h2>
-<p>A Computer Network connects computers to share data and resources.</p>
-
-<b>Types:</b>
-<ul>
-<li>LAN</li>
-<li>MAN</li>
-<li>WAN</li>
-</ul>
-`;
-break;
-
-case "html":
-notes=`
-<h2>🌍 HTML</h2>
-<p>HTML (HyperText Markup Language) creates the structure of web pages using elements like headings, paragraphs, images, links and tables.</p>
-`;
-break;
-
-case "css":
-notes=`
-<h2>🎨 CSS</h2>
-<p>CSS (Cascading Style Sheets) is used to style web pages by changing colors, fonts, layouts, spacing and animations.</p>
-`;
-break;
-
-case "javascript":
-notes=`
-<h2>⚡ JavaScript</h2>
-<p>JavaScript is used to make websites interactive by handling events, forms, animations and APIs.</p>
-`;
-break;
-
-case "java":
-notes=`
-<h2>☕ Java</h2>
-<p>Java is an object-oriented programming language used for Android apps, enterprise software and web applications.</p>
-`;
-break;
-
-case "ai":
-notes=`
-<h2>🤖 Artificial Intelligence</h2>
-<p>Artificial Intelligence enables computers to perform tasks that normally require human intelligence such as learning, reasoning and decision making.</p>
-`;
-break;
-
-default:
-notes=`
-<h2>📚 Notes</h2>
-<p>Notes are not available for this subject.</p>
-`;
-
-}
-
-document.getElementById("notes").innerHTML = notes;
-
-}
-
-function checkQuiz(){
-
-let score = 0;
-
-if(document.querySelector('input[name="q1"]:checked')?.value == "a"){
-    score++;
-}
-
-if(document.querySelector('input[name="q2"]:checked')?.value == "b"){
-    score++;
-}
-
-if(document.querySelector('input[name="q3"]:checked')?.value == "c"){
-    score++;
-}
-
-let message = "";
-
-if(score == 3){
-    message = "🏆 Excellent! Perfect Score!";
-}else if(score == 2){
-    message = "👍 Good Job! Keep Practicing.";
-}else if(score == 1){
-    message = "🙂 You need more practice.";
-}else{
-    message = "📚 Study more and try again.";
-}
-
-document.getElementById("score").innerHTML =
-"🎉 Your Score: " + score + "/3<br>" + message;
-
-localStorage.setItem("quizScore", score);
-
-}
-function downloadCertificate(){
-
-    alert("PDF Download feature will be added in the next version.");
-
-}
-
-function searchNotes(){
-
-let input = document.getElementById("searchBox").value.toLowerCase();
-
-let notes = document.getElementById("notes");
-
-if(notes.innerText.toLowerCase().includes(input)){
-
-notes.style.display = "block";
-
-}else{
-
-notes.style.display = "none";
-
-}
-
-if(input==""){
-
-notes.style.display = "block";
-
-}
-
-}
-function toggleTheme(){
-
-    document.body.classList.toggle("dark-mode");
-
-    if(document.body.classList.contains("dark-mode")){
-
-        localStorage.setItem("theme","dark");
-
-    }else{
-
-        localStorage.setItem("theme","light");
-
-    }
-
-}
-
-window.onload = function(){
-
-    if(localStorage.getItem("theme")=="dark"){
-
-        document.body.classList.add("dark-mode");
-
-    }
-
-}
-
-function saveProfile(){
-
-let name = document.getElementById("name").value.trim();
-let email = document.getElementById("email").value.trim();
-let mobile = document.getElementById("mobile").value.trim();
-
-if(name=="" || email=="" || mobile==""){
-    alert("Please fill all fields.");
-    return;
-}
-
-localStorage.setItem("studentName", name);
-localStorage.setItem("studentEmail", email);
-localStorage.setItem("studentMobile", mobile);
-
-alert("✅ Profile Updated Successfully!");
-
-window.location.href = "profile.html";
+);
 
 }
