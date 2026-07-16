@@ -1,39 +1,133 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Signup - EduNova AI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up - EduNova AI</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>Create Account</h1>
+<header>
+<h1>🎓 EduNova AI</h1>
+<p>Create Student Account</p>
+</header>
 
-<input type="text" id="name" placeholder="Full Name">
+<section>
 
-<br><br>
+<div class="card">
 
-<input type="email" id="email" placeholder="Email">
+<h2>📝 Sign Up</h2>
 
-<br><br>
+<input
+type="text"
+id="name"
+placeholder="Full Name">
 
-<input type="password" id="password" placeholder="Password">
+<br>
 
-<br><br>
-  <input
+<input
+type="email"
+id="email"
+placeholder="Email Address">
+
+<br>
+
+<input
 type="tel"
 id="mobile"
-placeholder="Enter Mobile Number"
+placeholder="Mobile Number"
 maxlength="10">
 
+<br>
+
+<input
+type="password"
+id="password"
+placeholder="Create Password">
+
+<br>
+
+<input
+type="password"
+id="confirmPassword"
+placeholder="Confirm Password">
+
 <br><br>
 
-<button onclick="signup()">Create Account</button>
+<button onclick="signupAccount()">
+✅ Create Account
+</button>
 
 <br><br>
 
-<a href="login.html">Already have an account? Login</a>
+<p>Already have an account?</p>
+
+<a href="login.html">
+<button>
+🔐 Login
+</button>
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 EduNova AI</p>
+
+</footer>
+
 <script src="script.js"></script>
-</body>
 
+<script>
+
+function signupAccount(){
+
+let name=document.getElementById("name").value.trim();
+let email=document.getElementById("email").value.trim();
+let mobile=document.getElementById("mobile").value.trim();
+let password=document.getElementById("password").value;
+let confirm=document.getElementById("confirmPassword").value;
+
+if(name==""||email==""||mobile==""||password==""||confirm==""){
+
+alert("Please fill all fields.");
+
+return;
+
+}
+
+if(mobile.length!=10){
+
+alert("Enter a valid 10-digit mobile number.");
+
+return;
+
+}
+
+if(password!=confirm){
+
+alert("Passwords do not match.");
+
+return;
+
+}
+
+localStorage.setItem("studentName",name);
+localStorage.setItem("studentEmail",email);
+localStorage.setItem("studentMobile",mobile);
+localStorage.setItem("studentPassword",password);
+
+alert("🎉 Account Created Successfully!");
+
+window.location.href="login.html";
+
+}
+
+</script>
+
+</body>
 </html>
