@@ -35,7 +35,9 @@ const urls=[
 
 "style.css",
 
-"script.js"
+"script.js",
+
+"offline.html"
 
 ];
 
@@ -55,11 +57,17 @@ self.addEventListener("fetch",event=>{
 
 event.respondWith(
 
-caches.match(event.request)
+fetch(event.request)
+
+.catch(()=>{
+
+return caches.match(event.request)
 
 .then(response=>{
 
-return response || fetch(event.request);
+return response || caches.match("offline.html");
+
+});
 
 })
 
