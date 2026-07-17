@@ -59,49 +59,49 @@ style="border-radius:50%;border:4px solid #2563eb;object-fit:cover;">
 
 </section>
 
-<script src="script.js"></script>
+  <script type="module">
 
-<script>
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
-document.getElementById("name").innerHTML =
-localStorage.getItem("studentName") || "Student";
-
-document.getElementById("email").innerHTML =
-localStorage.getItem("studentEmail") || "-";
-
-document.getElementById("mobile").innerHTML =
-localStorage.getItem("studentMobile") || "-";
-
-document.getElementById("score").innerHTML =
-localStorage.getItem("quizScore") || "0";
-
-let saved = localStorage.getItem("profilePhoto");
-
-if(saved){
-document.getElementById("preview").src = saved;
-}
-
-document.getElementById("profilePhoto").addEventListener("change",function(){
-
-let file=this.files[0];
-
-if(!file) return;
-
-let reader=new FileReader();
-
-reader.onload=function(e){
-
-document.getElementById("preview").src=e.target.result;
-
-localStorage.setItem("profilePhoto",e.target.result);
-
+const firebaseConfig = {
+  apiKey: "AIzaSyBv6tzSmI1ksTMdXo4FffSuU6WuUN-qeHg",
+  authDomain: "edunova-ai-c1c3e.firebaseapp.com",
+  projectId: "edunova-ai-c1c3e",
+  storageBucket: "edunova-ai-c1c3e.firebasestorage.app",
+  messagingSenderId: "545878851507",
+  appId: "1:545878851507:web:5abbcbe85be52f17b9d5c6"
 };
 
-reader.readAsDataURL(file);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+onAuthStateChanged(auth, async (user) => {
+
+    if (!user) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    const snap = await getDoc(doc(db, "students", user.uid));
+
+    if (snap.exists()) {
+
+        const data = snap.data();
+
+        document.getElementById("name").innerHTML = data.name;
+        document.getElementById("email").innerHTML = data.email;
+        document.getElementById("mobile").innerHTML = data.mobile;
+
+    }
 
 });
 
-</script>
+  </script>
+
+<script src="script.js"></script>
 <script type="module" src="firebase.js"></script>
 </body>
 </html>
