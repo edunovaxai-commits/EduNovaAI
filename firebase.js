@@ -198,15 +198,25 @@ document.getElementById("mobile").innerHTML=data.mobile;
 
 
 // =====================
-
 // LOGOUT
-
 // =====================
 
-window.firebaseLogout=function(){
+window.firebaseLogout = async function () {
 
-signOut(auth);
+    try {
 
-window.location="login.html";
+        await signOut(auth);
+
+        localStorage.clear();
+
+        alert("✅ Logout Successful");
+
+        window.location.href = "login.html";
+
+    } catch (error) {
+
+        alert(error.message);
+
+    }
 
 }
