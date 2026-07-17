@@ -34,47 +34,36 @@ placeholder="Enter Password">
 
 <br><br>
 
-<button onclick="firebaseLogin()">Login</button>
+<button onclick="firebaseLogin()">🔐 Login</button>
 
 <br><br>
 
 <p>Don't have an account?</p>
 
 <a href="signup.html">
-<button>
-📝 Create Account
-</button>
+<button type="button">📝 Create Account</button>
 </a>
 
 <br><br>
 
-<button onclick="guestLogin()">
-👤 Continue as Guest
-</button>
+<button onclick="guestLogin()">👤 Continue as Guest</button>
 
 </div>
 
 </section>
 
 <footer>
-
 <p>© 2026 EduNova AI</p>
-
 </footer>
 
-<script src="script.js"></script>
-
 <script>
-
 function guestLogin(){
-
-localStorage.setItem("studentName","Guest");
-
-window.location.href="dashboard.html";
-
+    localStorage.setItem("studentName","Guest");
+    window.location.href="dashboard.html";
 }
-
 </script>
+
 <script type="module" src="firebase.js"></script>
+
 </body>
 </html>
