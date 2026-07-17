@@ -12,37 +12,30 @@
 */
 
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-getAuth,
+const firebaseConfig = {
+  apiKey: "AIzaSyBv6tzSmI1ksTMdXo4FffSuU6WuUN-qeHg",
+  authDomain: "edunova-ai-c1c3e.firebaseapp.com",
+  projectId: "edunova-ai-c1c3e",
+  storageBucket: "edunova-ai-c1c3e.firebasestorage.app",
+  messagingSenderId: "545878851507",
+  appId: "1:545878851507:web:5abbcbe85be52f17b9d5c6"
+};
 
-createUserWithEmailAndPassword,
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-signInWithEmailAndPassword,
-
-signOut
-
-}
-
-from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
-
-import {
-
-getFirestore,
-
-doc,
-
-setDoc,
-
-getDoc
-
-}
-
-from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
-
-
+window.auth = auth;
+window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+window.signOut = signOut;
 
 // =====================
 
