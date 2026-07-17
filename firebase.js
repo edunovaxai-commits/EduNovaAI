@@ -50,20 +50,14 @@ from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
 // =====================
 
-const firebaseConfig={
-
-apiKey:"YOUR_API_KEY",
-
-authDomain:"YOUR_PROJECT.firebaseapp.com",
-
-projectId:"YOUR_PROJECT_ID",
-
-storageBucket:"YOUR_PROJECT.appspot.com",
-
-messagingSenderId:"YOUR_SENDER_ID",
-
-appId:"YOUR_APP_ID"
-
+const firebaseConfig = {
+  apiKey: "AIzaSyBv6tzSmI1ksTMdXo4FffSuU6WuUN-qeHg",
+  authDomain: "edunova-ai-c1c3e.firebaseapp.com",
+  projectId: "edunova-ai-c1c3e",
+  storageBucket: "edunova-ai-c1c3e.firebasestorage.app",
+  messagingSenderId: "545878851507",
+  appId: "1:545878851507:web:5abbcbe85be52f17b9d5c6",
+  measurementId: "G-9MVWG5BD8S"
 };
 
 
