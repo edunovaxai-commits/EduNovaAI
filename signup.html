@@ -81,47 +81,55 @@ placeholder="Confirm Password">
 <script src="script.js"></script>
 
 <script>
+window.firebaseSignup = async function () {
 
-function signupAccount(){
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let mobile = document.getElementById("mobile").value.trim();
+    let password = document.getElementById("password").value;
+    let confirm = document.getElementById("confirmPassword").value;
 
-let name=document.getElementById("name").value.trim();
-let email=document.getElementById("email").value.trim();
-let mobile=document.getElementById("mobile").value.trim();
-let password=document.getElementById("password").value;
-let confirm=document.getElementById("confirmPassword").value;
+    // Validation
+    if (name === "" || email === "" || mobile === "" || password === "" || confirm === "") {
+        alert("Please fill all fields.");
+        return;
+    }
 
-if(name==""||email==""||mobile==""||password==""||confirm==""){
+    if (mobile.length !== 10) {
+        alert("Enter a valid 10-digit mobile number.");
+        return;
+    }
 
-alert("Please fill all fields.");
+    if (password !== confirm) {
+        alert("Passwords do not match.");
+        return;
+    }
 
-return;
+    try {
 
-}
+        const userCredential = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
 
-if(mobile.length!=10){
+        await setDoc(
+            doc(db, "students", userCredential.user.uid),
+            {
+                name: name,
+                email: email,
+                mobile: mobile,
+                quizScore: 0
+            }
+        );
 
-alert("Enter a valid 10-digit mobile number.");
+        alert("🎉 Account Created Successfully!");
 
-return;
+        window.location.href = "login.html";
 
-}
-
-if(password!=confirm){
-
-alert("Passwords do not match.");
-
-return;
-
-}
-
-localStorage.setItem("studentName",name);
-localStorage.setItem("studentEmail",email);
-localStorage.setItem("studentMobile",mobile);
-localStorage.setItem("studentPassword",password);
-
-alert("🎉 Account Created Successfully!");
-
-window.location.href="login.html";
+    } catch (error) {
+        alert(error.message);
+    }
 
 }
 
