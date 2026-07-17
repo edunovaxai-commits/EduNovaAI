@@ -1,119 +1,56 @@
-// ===================================
-// EduNova AI Ultimate v10
-// gemini.js
-// Google Gemini AI Integration
-// ===================================
+const API_KEY = "";
 
-// ==============================
-// IMPORTANT
-// Replace YOUR_GEMINI_API_KEY
-// with your own Gemini API key
-// ==============================
+async function askGemini() {
 
-const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY";
+    const question = document.getElementById("question").value;
 
-const GEMINI_URL =
-"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + GEMINI_API_KEY;
+    if (question.trim() === "") {
+        alert("Please enter a question.");
+        return;
+    }
 
+    document.getElementById("answer").innerHTML = "⏳ Thinking...";
 
-// ===================================
-// Ask Gemini AI
-// ===================================
+    try {
 
-async function askGemini(){
+        const response = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [{
+                            text: question
+                        }]
+                    }]
+                })
+            }
+        );
 
-const question=document.getElementById("question").value.trim();
+        const data = await response.json();
 
-if(question==""){
-
-alert("Please enter your question.");
-
-return;
-
+if (!response.ok) {
+    throw new Error(data.error?.message || "Request failed");
 }
 
-document.getElementById("answer").innerHTML="🤖 Thinking...";
+document.getElementById("answer").innerHTML =
+    data.candidates[0].content.parts[0].text;
 
-try{
-
-const response=await fetch(GEMINI_URL,{
-
-method:"POST",
-
-headers:{
-
-"Content-Type":"application/json"
-
-},
-
-body:JSON.stringify({
-
-contents:[
-
-{
-
-parts:[
-
-{
-
-text:question
-
+    } catch (error) {
+        document.getElementById("answer").innerHTML =
+            "❌ Error: " + error.message;
+    }
 }
 
-]
-
+function clearChat() {
+    document.getElementById("question").value = "";
+    document.getElementById("answer").innerHTML = "";
 }
 
-]
-
-})
-
-});
-
-const data=await response.json();
-
-const answer=
-
-data.candidates?.[0]?.content?.parts?.[0]?.text ||
-
-"No response received.";
-
-document.getElementById("answer").innerHTML=answer;
-
+function copyAnswer() {
+    navigator.clipboard.writeText(document.getElementById("answer").innerText);
+    alert("Answer Copied!");
 }
-catch(error){
-
-document.getElementById("answer").innerHTML=
-
-"❌ Error : "+error.message;
-
-}
-
-}
-
-
-// ===================================
-// Enter Key Support
-// ===================================
-
-document.addEventListener("DOMContentLoaded",function(){
-
-const question=document.getElementById("question");
-
-if(question){
-
-question.addEventListener("keypress",function(e){
-
-if(e.key==="Enter"){
-
-e.preventDefault();
-
-askGemini();
-
-}
-
-});
-
-}
-
-});
