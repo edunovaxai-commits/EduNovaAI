@@ -135,35 +135,35 @@ alert(error.message);
 
 // =====================
 
-window.firebaseLogin=async function(){
+window.firebaseLogin = async function () {
 
-let email=document.getElementById("email").value;
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value;
 
-let password=document.getElementById("password").value;
+    if(email==="" || password===""){
+        alert("Please enter Email and Password");
+        return;
+    }
 
-try{
+    try{
 
-await signInWithEmailAndPassword(
+        const userCredential = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
 
-auth,
+        localStorage.setItem("uid", userCredential.user.uid);
 
-email,
+        alert("✅ Login Successful");
 
-password
+        window.location.href="dashboard.html";
 
-);
+    }catch(error){
 
-alert("Login Successful");
+        alert(error.message);
 
-window.location="dashboard.html";
-
-}
-
-catch(error){
-
-alert(error.message);
-
-}
+    }
 
 }
 
