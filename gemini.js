@@ -1,4 +1,4 @@
-const API_KEY = "AQ.Ab8RN6KCmnBJ81YbacvdvrqCxcQyyfxRklohpzwbsTD_bpZwDQ";
+const API_KEY ="AQ.Ab8RN6KFryjEnYEIfWEnAL6jhmyPiqTnpCvjPqi_0oJH-qJsng";
 
 async function askGemini() {
 
