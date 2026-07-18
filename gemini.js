@@ -1,10 +1,8 @@
-const API_KEY ="AQ.Ab8RN6KFryjEnYEIfWEnAL6jhmyPiqTnpCvjPqi_0oJH-qJsng";
-
 async function askGemini() {
 
     const question = document.getElementById("question").value;
 
-    if (question.trim() === "") {
+    if (!question.trim()) {
         alert("Please enter a question.");
         return;
     }
@@ -13,35 +11,28 @@ async function askGemini() {
 
     try {
 
-        const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    contents: [{
-                        parts: [{
-                            text: question
-                        }]
-                    }]
-                })
-            }
-        );
+        const response = await fetch("/api/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                question: question
+            })
+        });
 
         const data = await response.json();
 
-if (!response.ok) {
-    throw new Error(data.error?.message || "Request failed");
-}
+        if (!response.ok) {
+            throw new Error(data.error?.message || "Request Failed");
+        }
 
-document.getElementById("answer").innerHTML =
-    data.candidates[0].content.parts[0].text;
+        document.getElementById("answer").innerHTML =
+            data.candidates[0].content.parts[0].text;
 
     } catch (error) {
         document.getElementById("answer").innerHTML =
-            "❌ Error: " + error.message;
+            "❌ " + error.message;
     }
 }
 
@@ -51,6 +42,8 @@ function clearChat() {
 }
 
 function copyAnswer() {
-    navigator.clipboard.writeText(document.getElementById("answer").innerText);
+    navigator.clipboard.writeText(
+        document.getElementById("answer").innerText
+    );
     alert("Answer Copied!");
 }
