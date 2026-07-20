@@ -22,11 +22,13 @@ export default async function handler(req, res) {
         }),
       }
     );
-
+console.log("Status:", response.status);
+console.log("Status Text:", response.statusText);
     const data = await response.json();
 
     if (!response.ok) {
       return res.status(500).json(data);
+      console.log("Response:", data);
     }
 
     res.status(200).json(data);
