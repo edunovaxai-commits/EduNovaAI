@@ -21,11 +21,19 @@ async function askGemini() {
             })
         });
 
-        const data = await response.json();
+        const text = await response.text();
+console.log(text);
 
-        if (!response.ok) {
-            throw new Error(data.error?.message || "Request Failed");
-        }
+let data;
+try {
+    data = JSON.parse(text);
+} catch {
+    throw new Error(text);
+}
+
+if (!response.ok) {
+    throw new Error(JSON.stringify(data));
+}
 
         document.getElementById("answer").innerHTML =
             data.candidates[0].content.parts[0].text;
