@@ -24,14 +24,17 @@ export default async function handler(req, res) {
     );
 console.log("Status:", response.status);
 console.log("Status Text:", response.statusText);
-    const data = await response.json();
+    
+const data = await response.json();
 
-    if (!response.ok) {
-      return res.status(500).json(data);
-      console.log("Response:", data);
-    }
+console.log(data);
 
-    res.status(200).json(data);
+if (!response.ok) {
+  return res.status(response.status).json(data);
+}
+
+return res.status(200).json(data);
+    
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
