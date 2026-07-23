@@ -11,7 +11,7 @@ async function askGemini() {
 
     try {
 
-        const response = await fetch("/api/chat", {
+        const response = await fetch("https://edu-nova-ai-theta.vercel.app/api/chat", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
